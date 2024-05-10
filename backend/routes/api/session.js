@@ -1,5 +1,5 @@
-//This file will hold the resources for the route paths beginning with /api/session
-// backend/routes/api/session.js
+// Hold route paths beginning with /api/session
+
 const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
@@ -9,13 +9,12 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-
 // Log in
 router.post(
     '/',
     async (req, res, next) => {
       const { credential, password } = req.body;
-  
+
       const user = await User.unscoped().findOne({
         where: {
           [Op.or]: {
@@ -24,7 +23,7 @@ router.post(
           }
         }
       });
-  
+
       if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
         const err = new Error('Login failed');
         err.status = 401;
@@ -32,19 +31,21 @@ router.post(
         err.errors = { credential: 'The provided credentials were invalid.' };
         return next(err);
       }
-  
+
       const safeUser = {
         id: user.id,
         email: user.email,
         username: user.username,
       };
-  
+
       await setTokenCookie(res, safeUser);
-  
+
       return res.json({
         user: safeUser
       });
     }
   );
+
+
 
 module.exports = router;
