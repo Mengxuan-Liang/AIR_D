@@ -35,8 +35,8 @@ router.post(
           [Op.or]: {
             username: credential,
             email: credential,
-            firstName: firstName,
-            lastName: lastName
+            // firstName: firstName,
+            // lastName: lastName
           }
         }
       });
@@ -53,8 +53,8 @@ router.post(
         id: user.id,
         email: user.email,
         username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName
+        // firstName: user.firstName,
+        // lastName: user.lastName
       };
 
       await setTokenCookie(res, safeUser);
