@@ -8,6 +8,12 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Users', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       firstName: {
         type: Sequelize.STRING(256),
         allowNull: false
@@ -15,12 +21,6 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING(256),
         allowNull: false
-      },
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
       },
       username: {
         type: Sequelize.STRING(30),
