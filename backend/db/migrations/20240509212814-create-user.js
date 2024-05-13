@@ -10,9 +10,11 @@ module.exports = {
     await queryInterface.createTable('Users', {
       firstName: {
         type: Sequelize.STRING(256),
+        allowNull: false
       },
       lastName: {
         type: Sequelize.STRING(256),
+        allowNull: false
       },
       id: {
         allowNull: false,

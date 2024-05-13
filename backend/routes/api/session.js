@@ -34,7 +34,9 @@ router.post(
         where: {
           [Op.or]: {
             username: credential,
-            email: credential
+            email: credential,
+            firstName: firstName,
+            lastName: lastName
           }
         }
       });
