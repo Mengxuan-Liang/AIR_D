@@ -11,7 +11,7 @@ const { User, Booking, Review, Spotimage, ReviewImage, Spot} = require('../../db
 
 const router = express.Router();
 
-router.get('/spots', async (req, res) => {
+router.get('/', async (req, res) => {
     const spots = await Spot.findAll();
     res.json(spots)
 })
