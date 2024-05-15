@@ -82,9 +82,13 @@ router.get('/:spotId', async(req, res, next)=> {
     const spotInfo = await Spot.findAll({
         where: {id: spotId},
         include: [
-            {model: SpotImage},
-            {model: User, as: 'Owner'}
-        ]
+            {model: SpotImage,
+                attributes: ['id', 'url','preview']
+            },
+            {model: User, as: 'Owner',
+            attributes: ['id', 'firstName','lastName']
+        }
+        ],
     });
     const num = await numReviews(spotId)
     if(spotId > length){
