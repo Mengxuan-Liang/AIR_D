@@ -36,7 +36,6 @@ async function previewImage(spot){
             attributes: ['url'],
             where: {spotId: oneSpot.id}
         });
-        console.log(spotImg)
         oneSpot.dataValues.previewImage = spotImg[0].url;
     }
 }
@@ -49,9 +48,59 @@ router.get('/', async (req, res) => {
     res.json({Spot: spots})
 })
 
-router.get('/spots/current', async(req, res) =>{
-    const spot = await Spot.findAll()
+
+//Get all Spots owned by the Current User
+router.get('/current', requireAuth, async (req, res) => {
+    const userId = req.user.id;
+    const spots = await Spot.findAll({
+        where: {ownerId: userId}
+    }
+    );
+    await avgRating(spots);
+    await previewImage(spots);
+    res.json({Spot: spots})
 })
+
+//helper function to get numReviews for:Get details for a Spot from an id
+
+async function numReviews(spotId){
+   const review = await Review.findAll({
+    where: {
+        spotId: spotId
+    }
+   });
+   return review.length;
+}
+
+//Get details for a Spot from an id
+router.get('/:spotId', async(req, res, next)=> {
+    const spotId = req.params.spotId;
+    
+    const totalSpot = await Spot.findAll();
+    const length = totalSpot.length;
+    console.log(length)
+    const spotInfo = await Spot.findAll({
+        where: {id: spotId},
+        include: [
+            {model: SpotImage},
+            {model: User, as: 'Owner'}
+        ]
+    });
+    const num = await numReviews(spotId)
+    if(spotId > length){
+        res.status(404);
+        return res.json({"message": "Spot couldn't be found"})
+    }
+        spotInfo[0].dataValues.numReviews = num;
+        await avgRating(spotInfo);
+        res.json(spotInfo)
+
+
+})
+
+//Create a Spot
+
+
 
 
 module.exports = router;
