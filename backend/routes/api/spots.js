@@ -103,6 +103,84 @@ router.get('/:spotId', async(req, res, next)=> {
 })
 
 //Create a Spot
+router.post('/', requireAuth, async(req, res)=> {
+    const {ownerId,address, city, state, country, lat, lng, name, description, price} = req.body;
+
+    const err = new Error('Bad Request');
+    err.status = 400;
+    err.errors = {};
+    if(!address) {
+        let msg = "Street address is required";
+        err.errors.address = msg
+    }
+    if(!name || name.length > 50) {
+        let msg = "Name must be less than 50 characters";
+        err.errors.name = msg
+    }
+    if(!city) {
+        let msg = "City is required";
+        err.errors.city = msg
+    }
+    if(!state) {
+        let msg = "State is required";
+        err.errors.state = msg
+    }
+    if(!country) {
+        let msg = "Country is required";
+        err.errors.country = msg
+    }
+    if(lat < -90 || lat > 90 || !lat) {
+        let msg = "Latitude must be with -90 and 90";
+        err.errors.lat = msg
+    }
+    if(lng < -180 || lng > 180 || !lng) {
+        let msg = "Longitude must be with -180 and 180";
+        err.errors.lng = msg
+    }
+    if(!description) {
+        let msg = "Description is required";
+        err.errors.description = msg
+    }
+    if(price < 0 || !price) {
+        let msg = "Price per day must be a positive number";
+        err.errors.price = msg
+    }
+    if((Object.values(err.errors)).length) throw err;
+
+
+    const newSpot = await Spot
+    .create({
+        ownerId,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    });
+    // await Spot.save();
+    res.json(newSpot)
+})
+
+// Add an Image to a Spot based on the Spot's id
+
+
+
+
+
+// Edit a Spot
+
+
+// Delete a Spot
+
+
+
+
+
+
 
 
 

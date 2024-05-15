@@ -32,43 +32,77 @@ module.exports = (sequelize, DataTypes) => {
     address: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     city: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     country: {
      type: DataTypes.STRING,
      allowNull: false,
+     validate: {
+      notEmpty: true
+    }
     },
     lat: {
      type: DataTypes.DECIMAL,
      allowNull: false,
+     validate: {
+      max:90,
+      min:-90
+     }
     },
     lng: {
       type: DataTypes.DECIMAL,
       allowNull: false,
+      validate: {
+        max: 180,
+        min:-180
+      }
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len:[0,50]
+      }
     },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notEmpty: true
+      }
     },
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
+      validate: {
+        min:0
+      }
     }
 
   }, {
     sequelize,
     modelName: 'Spot',
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt','updatedAt']
+      }
+    }
   });
   return Spot;
 };
