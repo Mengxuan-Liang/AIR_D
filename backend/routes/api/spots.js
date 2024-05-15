@@ -53,6 +53,8 @@ router.get('/spots/current', async(req, res) =>{
     const spot = await Spot.findAll()
 })
 
+//Get all Spots owned by the Current User
+
 
 module.exports = router;
 
