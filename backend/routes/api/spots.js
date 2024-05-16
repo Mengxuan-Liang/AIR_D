@@ -78,7 +78,6 @@ router.get('/:spotId', async(req, res, next)=> {
     
     const totalSpot = await Spot.findAll();
     const length = totalSpot.length;
-    console.log(length)
     const spotInfo = await Spot.findAll({
         where: {id: spotId},
         include: [
@@ -162,11 +161,40 @@ router.post('/', requireAuth, async(req, res)=> {
         price
     });
     // await Spot.save();
-    res.json(newSpot)
+    res.status(201).json(newSpot)
 })
 
 // Add an Image to a Spot based on the Spot's id
+router.post('/:spotId/images', requireAuth, async (req,res)=> {
+    const spotId = req.params.spotId;
+    const userId = req.user.id;
+    const currentSpot = await Spot.findByPk(spotId);
 
+    // check if the spotId is less than the total spots of the logged in user
+    const totalSpot = await Spot.findAll({
+        // where: {ownerId: userId}
+    });
+    const length = totalSpot.length;
+  
+        if(spotId > length){
+            res.status(404);
+            return res.json({"message": "Spot couldn't be found"})
+        }
+    // check if the current user is the logged in user
+    const currentOwner = currentSpot.ownerId;
+    if(userId===currentOwner){
+        
+        const {url, preview} = req.body;
+        const img = await SpotImage.create({
+            where: {spotId: spotId },
+            url,
+            preview
+        });
+        res.json(img)
+    }else {
+        res.json({message: "you are not the owner, you can not add an image for this spot"})
+    }
+})
 
 
 
