@@ -197,13 +197,110 @@ router.post('/:spotId/images', requireAuth, async (req,res)=> {
 })
 
 
-
-
 // Edit a Spot
+router.put('/:spotId', requireAuth, async (req, res) => {
+    const { ownerId, address, city, state, country, lat, lng, name, description, price } = req.body;
+    const err = new Error('Bad Request');
+    err.status = 400;
+    err.errors = {};
+    if (!address) {
+        let msg = "Street address is required";
+        err.errors.address = msg
+    }
+    if (!name || name.length > 50) {
+        let msg = "Name must be less than 50 characters";
+        err.errors.name = msg
+    }
+    if (!city) {
+        let msg = "City is required";
+        err.errors.city = msg
+    }
+    if (!state) {
+        let msg = "State is required";
+        err.errors.state = msg
+    }
+    if (!country) {
+        let msg = "Country is required";
+        err.errors.country = msg
+    }
+    if (lat < -90 || lat > 90 || !lat) {
+        let msg = "Latitude must be with -90 and 90";
+        err.errors.lat = msg
+    }
+    if (lng < -180 || lng > 180 || !lng) {
+        let msg = "Longitude must be with -180 and 180";
+        err.errors.lng = msg
+    }
+    if (!description) {
+        let msg = "Description is required";
+        err.errors.description = msg
+    }
+    if (price < 0 || !price) {
+        let msg = "Price per day must be a positive number";
+        err.errors.price = msg
+    }
+    if ((Object.values(err.errors)).length) throw err;
+
+    const spotId = req.params.spotId;
+    // check if the current user is the logged in user
+    const currentSpot = await Spot.findByPk(spotId);
+    // check if the spotId is less than the total spots of the logged in user
+    const totalSpot = await Spot.findAll({
+        // where: {ownerId: userId}
+    });
+    const length = totalSpot.length;
+
+    if (spotId > length) {
+        res.status(404);
+        return res.json({ "message": "Spot couldn't be found" })
+    }
+    const currentOwner = currentSpot.ownerId;
+    const userId = req.user.id;
+    if (userId === currentOwner) {
+        const { address, city, state, country, lat, lng, name, description, price } = req.body;
+        if (address !== undefined) currentSpot.address = address;
+        if (city !== undefined) currentSpot.city = city;
+        if (state !== undefined) currentSpot.state = state;
+        if (country !== undefined) currentSpot.country = country;
+        if (lat !== undefined) currentSpot.lat = lat;
+        if (lng !== undefined) currentSpot.lng = lng;
+        if (name !== undefined) currentSpot.name = name;
+        if (description !== undefined) currentSpot.description = description;
+        if (price !== undefined) currentSpot.price = price;
+
+        await currentSpot.save();
+        res.json(currentSpot);
+    } else {
+        res.status(400)
+        res.json({ message: "you are not the owner, you can not delete this spot" })
+    }
+})
 
 
 // Delete a Spot
 
+router.delete('/:spotId', requireAuth, async (req, res) => {
+    
+    const spotId = req.params.spotId;
+
+    // check if the current user is the logged in user
+    const currentSpot = await Spot.findByPk(spotId);
+    if (!currentSpot) {
+        res.status(404);
+        return res.json({ "message": "Spot couldn't be found" })
+    }
+    const currentOwner = currentSpot.ownerId;
+    const userId = req.user.id;
+    if (userId === currentOwner) {
+
+        await currentSpot.destroy();
+        res.status(200);
+        res.json({ message: "Successfully deleted" })
+
+    } else {
+        res.json({ message: "you are not the owner, you can not add an image for this spot" })
+    }
+})
 
 
 
