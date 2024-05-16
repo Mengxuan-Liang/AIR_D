@@ -109,43 +109,44 @@ router.post('/', requireAuth, async (req, res) => {
     const err = new Error('Bad Request');
     err.status = 400;
     err.errors = {};
-    if (!address) {
+    console.log(address.length)
+    if (!address || address.trim() === '') {
         let msg = "Street address is required";
         err.errors.address = msg
     }
-    if (!name || name.length > 50) {
+    if (!name || name.length > 50 || name.trim() === '') {
         let msg = "Name must be less than 50 characters";
         err.errors.name = msg
     }
-    if (!city) {
+    if (!city || city.trim() === '') {
         let msg = "City is required";
         err.errors.city = msg
     }
-    if (!state) {
+    if (!state || state.trim() === '') {
         let msg = "State is required";
         err.errors.state = msg
     }
-    if (!country) {
+    if (!country || country.trim() === '') {
         let msg = "Country is required";
         err.errors.country = msg
     }
-    if (lat < -90 || lat > 90 || !lat) {
+    if (lat < -90 || lat > 90 || !lat || lat.toString().trim() === '') {
         let msg = "Latitude must be with -90 and 90";
         err.errors.lat = msg
     }
-    if (lng < -180 || lng > 180 || !lng) {
+    if (lng < -180 || lng > 180 || !lng || lng.toString().trim() === '') {
         let msg = "Longitude must be with -180 and 180";
         err.errors.lng = msg
     }
-    if (!description) {
+    if (!description || description.trim() === '') {
         let msg = "Description is required";
         err.errors.description = msg
     }
-    if (price < 0 || !price) {
+    if (price < 0 || !price || price.toString().trim() === '') {
         let msg = "Price per day must be a positive number";
         err.errors.price = msg
     }
-    if ((Object.values(err.errors)).length) throw err;
+    if ((Object.keys(err.errors)).length) throw err;
 
 
     const newSpot = await Spot
