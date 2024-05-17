@@ -23,6 +23,29 @@ module.exports = {
       reviewId: 3,
       url: 'url_image3'
     },
+    {
+      reviewId: 4,
+      url: 'url_image1'
+    },
+    {
+      reviewId: 5,
+      url: 'url_image2'
+    },
+    {
+      reviewId: 6,
+      url: 'url_image3'
+    },{
+      reviewId: 7,
+      url: 'url_image1'
+    },
+    {
+      reviewId: 8,
+      url: 'url_image2'
+    },
+    {
+      reviewId: 9,
+      url: 'url_image3'
+    },
    ])
   },
 

@@ -11,10 +11,32 @@ const { User, Booking, Review, SpotImage, ReviewImage, Spot} = require('../../db
 
 const router = express.Router();
 
-// router.get('/', async(req, res)=> {
-//     const info = await SpotImage.findAll()
-//     res.json(info)
-// })
+// delete a spot image
+router.delete('/:imageId', requireAuth, async(req, res)=> {
+     // check if this image belongs to the current logged in user
+     const currUser = req.user.id;
+     const imgId = req.params.imageId;
+     const img = await SpotImage.findByPk(imgId);
+     //check if this image exist in Spot-image
+     if(!img){
+         res.status(404).json({
+             "message": "Spot Image couldn't be found"
+         })
+     }
+     const spotId = img.spotId;
+     const spot = await Spot.findByPk(spotId);
+     if(currUser === spot.ownerId){
+        await img.destroy();
+        res.status(200).json({
+            "message": "Successfully deleted"
+        })
+     }else {
+        res.json({
+            message: "You are not the owner of this image, you cannot delete it!"
+        })
+     }
+})
+
 
 
 module.exports = router;
