@@ -137,9 +137,14 @@ async function numReviews(spotId) {
 //Get details for a Spot from an id---------------------------------------------------------------
 router.get('/:spotId', async (req, res, next) => {
     const spotId = req.params.spotId;
-
+    // check if the spotId exists
     const totalSpot = await Spot.findAll();
-    const length = totalSpot.length;
+    const existingSpot = totalSpot.find(spot => spot.id === spotId);
+    if(!existingSpot){
+        res.status(404);
+        return res.json({ "message": "Spot couldn't be found" })
+    }
+    // const length = totalSpot.length;
     const spotInfo = await Spot.findAll({
         where: { id: spotId },
         include: [
@@ -154,10 +159,10 @@ router.get('/:spotId', async (req, res, next) => {
         ],
     });
     const num = await numReviews(spotId)
-    if (spotId > length || spotId <= 0) {
-        res.status(404);
-        return res.json({ "message": "Spot couldn't be found" })
-    }
+    // if (spotId > length || spotId <= 0) {
+    //     res.status(404);
+    //     return res.json({ "message": "Spot couldn't be found" })
+    // }
     spotInfo[0].dataValues.numReviews = num;
     await avgRating(spotInfo);
     res.json(spotInfo)
@@ -409,18 +414,6 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     const err = new Error('Bad Request');
     err.status = 400;
     err.errors = {};
-    //check if the current user already made a review for this spot
-    const reviewsArrBelongsToCurrSopt = await Review.findAll({
-        where: { spotId: spotId }
-    });
-    for (let i = 0; i < reviewsArrBelongsToCurrSopt.length; i++) {
-        let userIdInCurrReviews = reviewsArrBelongsToCurrSopt[i].userId;
-        if (userIdInCurrReviews === userId) {
-            let msg = "You already made a review for this spot";
-            err.errors.reviewed = msg
-            res.status(403).json(msg)
-        }
-    }
     // check if the spotId is less than the total spots of the logged in user
     const totalSpot = await Spot.findAll();
     const length = totalSpot.length;
@@ -439,6 +432,19 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     }
     // if the error obj is not empty, throw the error
     if ((Object.values(err.errors)).length) throw err;
+
+    //check if the current user already made a review for this spot
+    const reviewsArrBelongsToCurrSopt = await Review.findAll({
+        where: { spotId: spotId }
+    });
+    for (let i = 0; i < reviewsArrBelongsToCurrSopt.length; i++) {
+        let userIdInCurrReviews = reviewsArrBelongsToCurrSopt[i].userId;
+        if (userIdInCurrReviews === userId) {
+            let msg = "You already made a review for this spot";
+            err.errors.reviewed = msg
+            res.status(403).json(msg)
+        }
+    }
     // if no error create the review
     const newReview = await Review.create({
         review,
@@ -505,6 +511,12 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         const err = new Error('Bad Request');
         err.status = 400;
         err.errors = {};
+        //check if user provide startDate and endDate:
+        if(!startDate || !endDate){
+            res.status(400).json({
+                message: "startDate and endDate are required"
+            })
+        }
         // check if the user input valide startDate and endDate
         let currTime = new Date();
         let year = currTime.getFullYear();
