@@ -139,7 +139,7 @@ router.get('/:spotId', async (req, res, next) => {
     const spotId = req.params.spotId;
     // check if the spotId exists
     const totalSpot = await Spot.findAll();
-    const existingSpot = totalSpot.find(spot => spot.id === spotId);
+    const existingSpot = totalSpot.find(spot => spot.id === +spotId);
     if(!existingSpot){
         res.status(404);
         return res.json({ "message": "Spot couldn't be found" })
@@ -442,7 +442,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         if (userIdInCurrReviews === userId) {
             let msg = "You already made a review for this spot";
             err.errors.reviewed = msg
-            res.status(403).json(msg)
+            res.status(500).json(msg)
         }
     }
     // if no error create the review

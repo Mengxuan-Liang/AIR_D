@@ -42,7 +42,7 @@ router.post(
       const { email, password, username, firstName, lastName } = req.body;
       // check if user provided email, username, firstname and lastname
       const err = new Error("Bad Request");
-      err.status(400);
+      err.status = 400;
       err.errors = {};
       if(!email){
         err.errors.email = "Invalid email"
