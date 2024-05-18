@@ -411,7 +411,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
                 }
             ]
         });
-        res.json({ Booking: booking })
+        res.json({ Bookings: booking })
     } else {
         const booking = await Booking.findAll({
             where: {
@@ -421,7 +421,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
                 exclude: ['createdAt', 'updatedAt', 'id', 'userId']
             }
         });
-        res.json({ Booking: booking })
+        res.json({ Bookings: booking })
     }
 })
 
