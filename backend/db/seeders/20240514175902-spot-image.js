@@ -25,6 +25,51 @@ module.exports = {
         url:'/images_airdnd.png',
         preview: true
       },
+      {
+        spotId: 4,
+        url: '/images_aird.png',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url:'/images_airdn.png',
+        preview: true
+      },
+      {
+        spotId: 6,
+        url:'/images_airdnd.png',
+        preview: true
+      },
+      {
+        spotId: 7,
+        url: '/images_aird.png',
+        preview: true
+      },
+      {
+        spotId: 8,
+        url:'/images_airdn.png',
+        preview: true
+      },
+      {
+        spotId: 9,
+        url:'/images_airdnd.png',
+        preview: true
+      },
+      {
+        spotId: 10,
+        url: '/images_aird.png',
+        preview: true
+      },
+      {
+        spotId: 11,
+        url:'/images_airdn.png',
+        preview: true
+      },
+      {
+        spotId: 12,
+        url:'/images_airdnd.png',
+        preview: true
+      },
       
     ], { validate: true });
   },
