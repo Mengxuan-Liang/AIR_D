@@ -41,12 +41,74 @@ async function previewImage(spot) {
 }
 
 //get all spots-----------------------------------------------------------------------------------
-router.get('/', async (req, res) => {
-    const spots = await Spot.findAll();
+// Add Query Filters to Get All Spots ------------------------------------------------------
+router.get('/', async(req, res, next)=> {
+    const {
+        page = 1,
+        size = 20,
+        minLat,
+        maxLat,
+        minLng,
+        maxLng,
+        minPrice,
+        maxPrice
+    } = req.query;
+
+    // Validate query parameters
+    const errors = {};
+
+    if (page < 1 || page > 10) errors.page = "Page must be between 1 and 10";
+    if (size < 1 || size > 20) errors.size = "Size must be between 1 and 20";
+    if (minLat && isNaN(parseFloat(minLat))) errors.minLat = "Minimum latitude is invalid";
+    if (maxLat && isNaN(parseFloat(maxLat))) errors.maxLat = "Maximum latitude is invalid";
+    if (minLng && isNaN(parseFloat(minLng))) errors.minLng = "Minimum longitude is invalid";
+    if (maxLng && isNaN(parseFloat(maxLng))) errors.maxLng = "Maximum longitude is invalid";
+    if (minPrice && (isNaN(parseFloat(minPrice)) || parseFloat(minPrice) < 0)) errors.minPrice = "Minimum price must be greater than or equal to 0";
+    if (maxPrice && (isNaN(parseFloat(maxPrice)) || parseFloat(maxPrice) < 0)) errors.maxPrice = "Maximum price must be greater than or equal to 0";
+
+    if (Object.keys(errors).length) {
+        return res.status(400).json({
+            message: "Bad Request",
+            errors
+        });
+    }
+
+    // Construct filters
+    const filters = {};
+    if (minLat) filters.lat = { [Op.gte]: parseFloat(minLat) };
+    if (maxLat) filters.lat = { ...filters.lat, [Op.lte]: parseFloat(maxLat) };
+    if (minLng) filters.lng = { [Op.gte]: parseFloat(minLng) };
+    if (maxLng) filters.lng = { ...filters.lng, [Op.lte]: parseFloat(maxLng) };
+    if (minPrice) filters.price = { [Op.gte]: parseFloat(minPrice) };
+    if (maxPrice) filters.price = { ...filters.price, [Op.lte]: parseFloat(maxPrice) };
+
+    // Pagination
+    let limit = parseInt(size);
+    let offset = parseInt(page);
+
+    // Query spots with filters and pagination
+    const spots = await Spot.findAll({
+        where: filters,
+        limit: size,
+        offset: size * (page - 1)
+    });
     await avgRating(spots);
     await previewImage(spots);
-    res.json({ Spot: spots })
+
+    // Format response
+    const response = {
+        Spots: spots,
+        page,
+        size
+    };
+    res.status(200).json(response);
 })
+// router.get('/', async (req, res) => {
+//     const spots = await Spot.findAll();
+//     await avgRating(spots);
+//     await previewImage(spots);
+//     res.json({ Spot: spots })
+// })
 
 
 //Get all Spots owned by the Current User---------------------------------------------------------
@@ -502,72 +564,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 })
 
-// Add Query Filters to Get All Spots ------------------------------------------------------
-router.get('/', async(req, res, next)=> {
-    try {
-        const {
-            page = 1,
-            size = 20,
-            minLat,
-            maxLat,
-            minLng,
-            maxLng,
-            minPrice,
-            maxPrice
-        } = req.query;
 
-        // Validate query parameters
-        const errors = {};
-
-        if (page < 1 || page > 10) errors.page = "Page must be between 1 and 10";
-        if (size < 1 || size > 20) errors.size = "Size must be between 1 and 20";
-        if (minLat && isNaN(parseFloat(minLat))) errors.minLat = "Minimum latitude is invalid";
-        if (maxLat && isNaN(parseFloat(maxLat))) errors.maxLat = "Maximum latitude is invalid";
-        if (minLng && isNaN(parseFloat(minLng))) errors.minLng = "Minimum longitude is invalid";
-        if (maxLng && isNaN(parseFloat(maxLng))) errors.maxLng = "Maximum longitude is invalid";
-        if (minPrice && (isNaN(parseFloat(minPrice)) || parseFloat(minPrice) < 0)) errors.minPrice = "Minimum price must be greater than or equal to 0";
-        if (maxPrice && (isNaN(parseFloat(maxPrice)) || parseFloat(maxPrice) < 0)) errors.maxPrice = "Maximum price must be greater than or equal to 0";
-
-        if (Object.keys(errors).length) {
-            return res.status(400).json({
-                message: "Bad Request",
-                errors
-            });
-        }
-
-        // Construct filters
-        const filters = {};
-        if (minLat) filters.lat = { [Op.gte]: parseFloat(minLat) };
-        if (maxLat) filters.lat = { ...filters.lat, [Op.lte]: parseFloat(maxLat) };
-        if (minLng) filters.lng = { [Op.gte]: parseFloat(minLng) };
-        if (maxLng) filters.lng = { ...filters.lng, [Op.lte]: parseFloat(maxLng) };
-        if (minPrice) filters.price = { [Op.gte]: parseFloat(minPrice) };
-        if (maxPrice) filters.price = { ...filters.price, [Op.lte]: parseFloat(maxPrice) };
-
-        // Pagination
-        const limit = parseInt(size, 10);
-        const offset = (parseInt(page, 10) - 1) * limit;
-
-        // Query spots with filters and pagination
-        const spots = await Spot.findAll({
-            where: filters,
-            limit,
-            offset
-        });
-
-        // Format response
-        const response = {
-            Spots: spots,
-            // page: parseInt(page, 10),
-            page: offset,
-            size: limit
-        };
-        res.status(200).json(response);
-
-    } catch (error) {
-        next(error);
-    }
-})
 
 module.exports = router;
 
