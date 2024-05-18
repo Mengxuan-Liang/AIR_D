@@ -14,18 +14,35 @@ module.exports = {
         spotId: 1,
         userId: 1,
         startDate: '2024-01-01',
-        endDate: '2024-05-05'
+        endDate: '2024-01-05'
       },
       {
         spotId: 2,
         userId: 2,
         startDate: '2024-03-01',
-        endDate: '2024-06-05'
+        endDate: '2024-03-05'
       },{
         spotId: 3,
         userId: 3,
         startDate: '2024-02-01',
+        endDate: '2024-02-05'
+      },
+      {
+        spotId: 1,
+        userId: 1,
+        startDate: '2024-06-01',
+        endDate: '2024-06-05'
+      },
+      {
+        spotId: 2,
+        userId: 2,
+        startDate: '2024-07-01',
         endDate: '2024-07-05'
+      },{
+        spotId: 3,
+        userId: 3,
+        startDate: '2024-08-01',
+        endDate: '2024-08-05'
       },
       
     ], { validate: true });
