@@ -44,7 +44,7 @@ router.get('/current', requireAuth, async(req,res)=> {
         }
     });
     await previewImage(bookings)
-    res.json({Booking: bookings})
+    res.json({Bookings: bookings})
 })
 
 
