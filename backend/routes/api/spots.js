@@ -341,7 +341,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         res.json(currentSpot);
     } else {
         res.status(400)
-        res.json({ message: "You are not the owner, you can not delete this spot" })
+        res.json({ message: "You are not the owner, you can not edit this spot" })
     }
 })
 

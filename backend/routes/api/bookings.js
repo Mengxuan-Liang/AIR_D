@@ -156,6 +156,7 @@ router.delete('/:bookingId', requireAuth, async(req,res)=> {
                     "message": "Bookings that have been started can't be deleted"
                 })
     }
+    await currBooking.destroy();
     res.json({
         message: "Successfully deleted"
     })
