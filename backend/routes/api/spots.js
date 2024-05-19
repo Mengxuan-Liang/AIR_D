@@ -36,10 +36,11 @@ async function previewImage(spot) {
             attributes: ['url'],
             where: { spotId: oneSpot.id }
         });
-        if(!spotImg){
+        if(spotImg.length>0){
+            oneSpot.dataValues.previewImage = spotImg[0].url;
+        }else {
             oneSpot.dataValues.previewImage = null;
         }
-        oneSpot.dataValues.previewImage = spotImg[0].url;
     }
 }
 
