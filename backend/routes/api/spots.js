@@ -36,6 +36,9 @@ async function previewImage(spot) {
             attributes: ['url'],
             where: { spotId: oneSpot.id }
         });
+        if(!spotImg){
+            oneSpot.dataValues.previewImage = null;
+        }
         oneSpot.dataValues.previewImage = spotImg[0].url;
     }
 }

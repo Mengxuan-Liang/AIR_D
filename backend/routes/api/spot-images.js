@@ -25,6 +25,11 @@ router.delete('/:imageId', requireAuth, async(req, res)=> {
      }
      const spotId = img.spotId;
      const spot = await Spot.findByPk(spotId);
+     if(!spot || !spot.ownerId){
+        return res.status(404).json({
+            message: "Spot not found or no valide owner for this spot"
+        })
+     }
      if(currUser === spot.ownerId){
         await img.destroy();
         res.status(200).json({

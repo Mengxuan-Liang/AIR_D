@@ -24,19 +24,24 @@ router.delete('/:imageId', requireAuth, async(req, res)=> {
      const img = await ReviewImage.findByPk(imgId);
      //check if this image exist in Review-image
      if(!img){
-         res.status(404).json({
-             "message": "Spot Image couldn't be found"
+         return res.status(404).json({
+             "message": "Review Image couldn't be found"
          })
      }
      const reviewId = img.reviewId;
      const review = await Review.findByPk(reviewId);
+     if(!review || !review.userId){
+        return res.status(404).json({
+            message: "No Review found or does not have a valid user"
+        })
+     }
      if(currUser === review.userId){
         await img.destroy();
-        res.status(200).json({
+        return res.status(200).json({
             "message": "Successfully deleted"
         })
      }else {
-        res.json({
+        return res.status(403).json({
             message: "You are not the owner of this image, you cannot delete it!"
         })
      }
