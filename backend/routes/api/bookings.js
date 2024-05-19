@@ -126,7 +126,7 @@ router.put('/:bookingId', requireAuth, async(req,res)=> {
         await booking.save();
         res.json(booking)
     }else {
-        res.json({message:"You are not the owner of this booking, cannot edit"})
+        res.status(403).json({message:"You are not the owner of this booking, cannot edit"})
     }
 })
 

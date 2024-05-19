@@ -93,7 +93,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         });
         res.json(newImg);
     }else {
-        res.status(400)
+        res.status(403)
         res.json({"message": "You are not the owner of this review"})
     }
 })

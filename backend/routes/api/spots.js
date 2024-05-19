@@ -265,7 +265,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         });
         res.json(img)
     } else {
-        res.json({ message: "you are not the owner, you can not add an image for this spot" })
+        res.status(403).json({ message: "you are not the owner, you can not add an image for this spot" })
     }
 })
 
@@ -576,7 +576,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         });
         res.json(newBooking)
     } else {
-        res.json({ message: "You are the owner of this spot" })
+        res.status(403).json({ message: "You are the owner of this spot, you cannot create a booking" })
     }
 })
 
