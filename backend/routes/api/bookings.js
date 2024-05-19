@@ -130,7 +130,7 @@ router.put('/:bookingId', requireAuth, async(req,res)=> {
     }
 })
 
-// delete a booking--------------------------------------------------------CAN NOT delete the db record??
+// delete a booking--------------------------------------------------
 router.delete('/:bookingId', requireAuth, async(req,res)=> {
     // check if this booking belongs to the current logged in user
     const currUser = req.user.id;

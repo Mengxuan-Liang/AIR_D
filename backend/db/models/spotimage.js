@@ -19,10 +19,17 @@ module.exports = (sequelize, DataTypes) => {
   SpotImage.init({
     spotId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       onDelete: 'CASCADE',
     },
-    url: DataTypes.STRING,
-    preview: DataTypes.BOOLEAN
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    preview: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'SpotImage',

@@ -70,6 +70,66 @@ module.exports = {
         url:'/images_airdnd.png',
         preview: true
       },
+      {
+        spotId: 1,
+        url: '/images_aird2.png',
+        preview: true
+      },
+      {
+        spotId: 2,
+        url:'/images_airdn2.png',
+        preview: true
+      },
+      {
+        spotId: 3,
+        url:'/images_airdnd2.png',
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: '/images_aird2.png',
+        preview: true
+      },
+      {
+        spotId: 5,
+        url:'/images_airdn2.png',
+        preview: true
+      },
+      {
+        spotId: 6,
+        url:'/images_airdnd2.png',
+        preview: true
+      },
+      {
+        spotId: 7,
+        url: '/images_aird2.png',
+        preview: true
+      },
+      {
+        spotId: 8,
+        url:'/images_airdn2.png',
+        preview: true
+      },
+      {
+        spotId: 9,
+        url:'/images_airdnd2.png',
+        preview: true
+      },
+      {
+        spotId: 10,
+        url: '/images_aird2.png',
+        preview: true
+      },
+      {
+        spotId: 11,
+        url:'/images_airdn2.png',
+        preview: true
+      },
+      {
+        spotId: 12,
+        url:'/images_airdnd2.png',
+        preview: true
+      },
       
     ], { validate: true });
   },
