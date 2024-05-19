@@ -161,7 +161,7 @@ router.delete('/:bookingId', requireAuth, async(req,res)=> {
         message: "Successfully deleted"
     })
     }else {
-        res.json({
+        res.status(403).json({
             message: "You are not the owner of this booking, you can not delete this booking!"
         })
     }
