@@ -77,10 +77,10 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     // check if the review has reach max of 10 images
     const totalImgForThisReveiw = await ReviewImage.count({
         where: {
-            reviewId: reviewId
+            reviewId
         }
     });
-    if (totalImgForThisReveiw.length >= 10) {
+    if (totalImgForThisReveiw >= 10) {
         res.status(403).json({ "message": "Maximum number of images for this resource was reached" })
     }
     const reviewOwner = review.dataValues.userId;
