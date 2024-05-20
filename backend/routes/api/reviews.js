@@ -75,7 +75,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         res.status(404).json({ "message": "Review couldn't be found" })
     }
     // check if the review has reach max of 10 images
-    const totalImgForThisReveiw = await ReviewImage.findAll({
+    const totalImgForThisReveiw = await ReviewImage.count({
         where: {
             reviewId: reviewId
         }
