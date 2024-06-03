@@ -22,7 +22,7 @@ function Spots() {
 
     return (
         <>
-        <div>
+        {/* <div>
             <nav className='navbar-links-container'>
                 <div className='navbar-subcontainer'>
                     <img
@@ -39,7 +39,7 @@ function Spots() {
                     <h2 className='navbar-title'>BarkBnB</h2>
                 </div>
             </nav>
-        </div>
+        </div> */}
 
     <div>
 

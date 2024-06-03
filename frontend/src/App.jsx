@@ -7,6 +7,7 @@ import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
 import { Modal } from './context/Modal';
 import Spots from './components/Spots';
+import Landing from './components/Landing';
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,8 +22,8 @@ function Layout() {
     <>
       <Modal/>
       <Navigation isLoaded={isLoaded} />
-      {/* {isLoaded && <Outlet />} */}
-      {isLoaded}
+      {isLoaded && <Outlet />}
+      {/* {isLoaded} */}
     </>
   );
 }
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1></h1>
+        element: <Landing />
+      },
+      {
+        path:'spots',
+        element:<Spots />
       },
       {
         path: 'login',
@@ -43,12 +48,12 @@ const router = createBrowserRouter([
         path: 'signup',
         element: <SignupFormPage />
       },
+      {
+        path: '*',
+        element: <h2>Page Not Found</h2>
+      },
     ]
   },
-  {
-    path:'spots',
-    element:<Spots />
-  }
 ]);
 
 function App() {

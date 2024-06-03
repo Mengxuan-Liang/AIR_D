@@ -52,6 +52,9 @@ function Navigation({ isLoaded }) {
               className='navbar-logo'
               src='../dist/assets/IMG_0228.JPG'
               alt='dog-logo-image'
+              onClick={()=> {
+                navigate('/')
+            }}
             />
             <h2 className='navbar-title'>BarkBnB</h2>
           </div>
@@ -60,7 +63,7 @@ function Navigation({ isLoaded }) {
         {isLoaded && sessionLinks}
         </nav>
       </div>
-      <div className='landing-container'>
+      {/* <div className='landing-container'>
         <h1 className='landing-title'>BarkBnB</h1>
         <img
           style={{
@@ -69,12 +72,12 @@ function Navigation({ isLoaded }) {
           src='../dist/assets/IMG_0228.JPG'
           alt='mydog-image'
         />
-       <button onClick={()=>  navigate('/spots')}>View All Spots</button>
+       <button onClick={()=>  navigate('/spots')}>View All Spots</button> */}
         {/* <div className='all-spot-landing'>
           <NavLink to="spots">View All Spots</NavLink>
         </div> */}
-      </div>
-      <Outlet />
+      {/* </div> */}
+      {/* <Outlet /> */}
     </>
   );
 }
