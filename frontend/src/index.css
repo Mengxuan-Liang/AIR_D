@@ -1,1 +1,5 @@
 /* TODO: Add sitewide styles */
+@font-face {
+    font-family: Billabong;
+    src: url('./Billabong.ttf');
+  }
