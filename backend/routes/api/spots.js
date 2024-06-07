@@ -93,8 +93,8 @@ router.get('/', async(req, res, next)=> {
     // Query spots with filters and pagination
     const spots = await Spot.findAll({
         where: filters,
-        limit: size,
-        offset: size * (page - 1)
+        // limit: size,
+        // offset: size * (page - 1)
     });
     await avgRating(spots);
     await previewImage(spots);

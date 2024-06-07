@@ -6,15 +6,21 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import Spots from '../Spots';
 import './Navigation.css';
+import CreateSpotForm from '../CreateSpotForm';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   const sessionLinks = sessionUser ?
     (
+      <>
+      <li>
+        <NavLink to='/spots/new'> Create A New Spot</NavLink>
+      </li>
       <li>
         <ProfileButton user={sessionUser} />
       </li>
+      </>
     ) : (
       <>
         {/* <li> */}

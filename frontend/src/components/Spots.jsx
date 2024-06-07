@@ -6,10 +6,11 @@ import SpotLists from './SpotLists';
 import  './SpotLists.css';
 function Spots() {
     const navigate = useNavigate();
-    const data = useSelector(state => state.spotsState.spots);
-    console.log(data)
+    const data = useSelector(state => state.spotsState.allSpots);
+    // const data = useSelector(state => state.spotsState);
+    console.log('this is the data from Spot.jsx',data)
     const dataArr = Object.values(data);
-    console.log(dataArr)
+    // console.log(dataArr)
     // const dataArr = Object.va
     // const dataArr = data.spots.Spots;
     // console.log(data.spots.Spots)
@@ -18,7 +19,7 @@ function Spots() {
 
     useEffect(()=> {
         dispatch(getAllSpots())
-    },[])
+    },[dispatch])
 
     return (
         <>

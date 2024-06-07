@@ -3,19 +3,32 @@
     flex-wrap: wrap;
     flex-direction: row; */
     /* border: red solid 2px; */
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-
+    /* width: 150px; */
+    /* display: flex;
+    flex-direction: column; */
+    flex: 1;
 }
 
 .spots-container{
     /* border: blue solid 2px; */
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+    
 }
 
 .single-spot {
     border: red 2px solid;
+}
+
+.spot-image {
+    height: 150px;
+    weight: 150px;
+    
+    /* border: 2px green solid; */
+}
+
+.spot-img {
+    /* border: 2px purple solid; */
 }
