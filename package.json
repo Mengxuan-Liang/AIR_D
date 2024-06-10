@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/Mengxuan-Liang/AIR_D/issues"
   },
-  "homepage": "https://github.com/Mengxuan-Liang/AIR_D#readme"
+  "homepage": "https://github.com/Mengxuan-Liang/AIR_D#readme",
+  "dependencies": {
+    "react-icons": "^5.2.1"
+  }
 }

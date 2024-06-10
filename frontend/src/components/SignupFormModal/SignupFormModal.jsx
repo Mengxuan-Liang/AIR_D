@@ -40,7 +40,7 @@ function SignupFormModal() {
       confirmPassword: "Confirm Password field must be the same as the Password field"
     });
   };
-
+  let isButtonDisabled = password.length < 6 || username.length < 4 || !email.length || !username.length || !firstName.length || !lastName ||!password;
   return (
     <>
       <h1>Sign Up</h1>
@@ -51,6 +51,7 @@ function SignupFormModal() {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
             required
           />
         </label>
@@ -61,6 +62,7 @@ function SignupFormModal() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='Username'
             required
           />
         </label>
@@ -71,6 +73,7 @@ function SignupFormModal() {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder='First Name'
             required
           />
         </label>
@@ -81,6 +84,7 @@ function SignupFormModal() {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder='Last Name'
             required
           />
         </label>
@@ -91,6 +95,7 @@ function SignupFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
         </label>
@@ -101,11 +106,14 @@ function SignupFormModal() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder='Confirm Password'
             required
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button type="submit">Sign Up</button>
+        
+        <button disabled={isButtonDisabled}
+        type="submit">Sign Up</button>
       </form>
     </>
   );

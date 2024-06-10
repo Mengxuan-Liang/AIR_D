@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './LoginForm.css';
+import { Navigate } from 'react-router-dom';
+
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -10,6 +12,26 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+
+  useEffect(() => {
+    const errors = {};
+
+    if (credential.length < 4) {
+      errors.credential = "";
+    }
+
+    if (password.length < 6) {
+      errors.password = "";
+    }
+
+    setErrors(errors);
+  }, [credential, password]);
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +45,10 @@ function LoginFormModal() {
         }
       });
   };
+
+  const isButtonDisabled = credential.length < 4 || password.length < 6;
+
+  if (sessionUser) return <Navigate to="/" replace={true} />;
 
   return (
     <>
@@ -47,7 +73,16 @@ function LoginFormModal() {
           />
         </label>
         {errors.credential && <p>{errors.credential}</p>}
-        <button type="submit">Log In</button>
+        {errors.password && <p>{errors.password}</p>}
+        <button type="submit"
+          disabled={isButtonDisabled}
+        >Log In</button>
+        <button type='submit'
+          onClick={()=> {
+            setCredential('demo@user.io');
+            setPassword('password1')
+          }}
+        >Demo User</button>
       </form>
     </>
   );

@@ -1,0 +1,72 @@
+/* .body {
+    margin:0px;
+} */
+
+.spot-container {
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; */
+    border: red solid 2px;
+    /* width: 150px; */
+    /* display: flex;
+    flex-direction: column; */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    flex: 1 1 100%;
+
+}
+
+.spots-container{
+    border: blue solid 2px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+/* .single-spot {
+    border: black 2px solid;
+} */
+
+.spot-image {
+    height: 150px;
+    width: 150px;
+    
+    border: 2px green solid;
+    /* width: 100%;
+    height: auto;
+    display: block; */
+}
+
+.spot-img {
+    /* border: 2px purple solid; */
+}
+
+@media (min-width: 480px) {
+    .spot-container {
+        flex: 1 1 calc(50% - 20px); /* 2 columns */
+    }
+}
+
+@media (min-width: 768px) {
+    .spot-container {
+        flex: 1 1 calc(33.33% - 20px); /* 3 columns */
+    }
+}
+
+@media (min-width: 1024px) {
+    .spot-container {
+        flex: 1 1 calc(25% - 20px); /* 4 columns */
+    }
+}
+
+/* Ensure the maximum number of columns is 4 */
+@media (min-width: 1440px) {
+    .spots-container {
+        max-width: 1200px; /* 4 columns of 300px each (with some spacing) */
+        margin: 0 auto; /* Center the container */
+    }
+}

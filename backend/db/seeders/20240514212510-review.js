@@ -13,16 +13,16 @@ module.exports = {
       {
         spotId: 1,
         userId: 3,
-        review: 'not a great place to stay',
+        review: 'this is a great place to stay',
         stars: 5
       },{
-        spotId: 2,
+        spotId: 9,
         userId: 1,
         review: 'this is a great place to stay',
         stars: 1
       },
       {
-        spotId: 2,
+        spotId: 8,
         userId: 3,
         review: 'this palce is great',
         stars: 3
@@ -30,7 +30,7 @@ module.exports = {
       {
         spotId: 3,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },
       {
@@ -58,7 +58,7 @@ module.exports = {
       {
         spotId: 5,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 5,
@@ -92,7 +92,7 @@ module.exports = {
       {
         spotId: 7,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 7,
@@ -109,7 +109,7 @@ module.exports = {
       {
         spotId: 8,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 8,
@@ -126,7 +126,7 @@ module.exports = {
       {
         spotId: 9,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 9,
@@ -143,7 +143,7 @@ module.exports = {
       {
         spotId: 10,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 10,
@@ -160,7 +160,7 @@ module.exports = {
       {
         spotId: 11,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId:11,
@@ -177,7 +177,7 @@ module.exports = {
       {
         spotId: 12,
         userId: 2,
-        review: 'not a bad place',
+        review: 'this palce is great',
         stars: 2
       },{
         spotId: 12,

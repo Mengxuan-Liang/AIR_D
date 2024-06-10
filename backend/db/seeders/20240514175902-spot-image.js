@@ -12,122 +12,122 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: '/images_aird.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717269282/816212804889b08e4d1fc957512dc5f7_r5oqyk.jpg',
         preview: true
       },
       {
         spotId: 2,
-        url:'/images_airdn.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368398/images_g4fwoi.jpg',
         preview: true
       },
       {
         spotId: 3,
-        url:'/images_airdnd.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368510/il_570xN.4864907940_irvh_utaz1p.avif',
         preview: true
       },
       {
         spotId: 4,
-        url: '/images_aird.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368587/dog_house_by_ai_visions_dgmjcu1-pre_uyxfv8.jpg',
         preview: true
       },
       {
         spotId: 5,
-        url:'/images_airdn.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 6,
-        url:'/images_airdnd.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg',
         preview: true
       },
       {
         spotId: 7,
-        url: '/images_aird.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg',
         preview: true
       },
       {
         spotId: 8,
-        url:'/images_airdn.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 9,
-        url:'/images_airdnd.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 10,
-        url: '/images_aird.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 11,
-        url:'/images_airdn.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 12,
-        url:'/images_airdnd.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 1,
-        url: '/images_aird2.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 2,
-        url:'/images_airdn2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 3,
-        url:'/images_airdnd2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 4,
-        url: '/images_aird2.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 5,
-        url:'/images_airdn2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 6,
-        url:'/images_airdnd2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 7,
-        url: '/images_aird2.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 8,
-        url:'/images_airdn2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 9,
-        url:'/images_airdnd2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 10,
-        url: '/images_aird2.png',
+        url: 'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 11,
-        url:'/images_airdn2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       {
         spotId: 12,
-        url:'/images_airdnd2.png',
+        url:'https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368652/0H9fXk4lMC6xmLguo5OT--grid_cclpas.webp',
         preview: true
       },
       
