@@ -1,6 +1,6 @@
 import { useModal } from "../../context/Modal"
 import { useDispatch } from 'react-redux'
-import { getAllReviews, removeReview, addReview } from "../../store/reviewReducer"
+import { getAllReviews, addReview } from "../../store/reviewReducer"
 import { getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react"
 
@@ -18,7 +18,7 @@ export default function PostReviewModal({ spotId }) {
         const validate = () => {
             const error = {};
             if (!review) error.review = 'Review is required';
-            if (!stars || (typeof (stars) !== 'integer') || stars < 1 || stars > 5) error.stars = 'Star rating must be an integer from 1 to 5';
+            if (!stars || stars < 1 || stars > 5) error.stars = 'Star rating must be an integer from 1 to 5';
             // if (review && review.userId === session.user.id) error.reviewed = 'You can only make one review for this spot'
             return error;
         }
@@ -40,7 +40,7 @@ export default function PostReviewModal({ spotId }) {
             }
             const newReview = await dispatch(addReview(spotId, userInput));
             if (newReview) {
-                console.log('created new review from postreviewmodal', newReview)
+                // console.log('created new review from postreviewmodal', newReview)
                 await dispatch(getAllReviews(spotId));
                 // // console.log('sssssssssss','Closing modal'); 
                 await dispatch(getOneSpot(spotId))
@@ -49,7 +49,7 @@ export default function PostReviewModal({ spotId }) {
 
         }
     }
-
+    const isButtonDisabled = review.length<10 || stars < 1 
     return (
         <div>
             <h2>How was your stay?</h2>
@@ -82,7 +82,7 @@ export default function PostReviewModal({ spotId }) {
 
             <div>
 
-                <button onClick={handleSubmit}>Submit Your Review</button>
+                <button onClick={handleSubmit} disabled={isButtonDisabled}>Submit Your Review</button>
                 {/* <button onClick={()=> closeModal()}>No (Keep Review)</button> */}
             </div>
         </div>

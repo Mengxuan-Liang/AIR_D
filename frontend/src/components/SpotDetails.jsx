@@ -1,17 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import SpotLists from './SpotLists';
-import Spots from './Spots';
+// import SpotLists from './SpotLists';
+// import Spots from './Spots';
 // import sessionReducer from '../store/session';
 import { getOneSpot } from '../store/spotsReducer';
-import { useEffect, useId } from 'react';
+import { useEffect } from 'react';
 import './SpotDetails.css'
 import { FaStar } from "react-icons/fa6";
 import { getAllReviews } from '../store/reviewReducer';
 import DeleteReviewModal from './Review/DeleteReviewModal'
-import LoginFormModal from './LoginFormModal/LoginFormModal';
+// import LoginFormModal from './LoginFormModal/LoginFormModal';
 import OpenModalButton from './OpenModalButton/OpenModalButton';
-import { useState } from 'react';
+// import { useState } from 'react';
 import PostReviewModal from './Review/PostReviewModal';
 
 export default function SpotDetails() {
@@ -31,7 +31,7 @@ export default function SpotDetails() {
     //get all REVIEWS by spotId:
     const reviewsState = useSelector(state => state.reviewsState);
     const reviews = Object.values(reviewsState)
-    console.log('this is the review from spot details', reviews)
+    // console.log('this is the review from spot details', reviews)
 
     useEffect(() => {
         // dispatch(getOneSpot(spotId))

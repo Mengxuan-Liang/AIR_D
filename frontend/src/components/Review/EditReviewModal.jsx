@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useModal } from "../../context/Modal"
 import { useDispatch } from 'react-redux'
-import { getAllReviews, removeReview, updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
-import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
+import { updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
+// import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react"
 
 
 export default function EditReviewModal({ userReview, spotName, spotId }) {
-    console.log('userReviewwwww from editreview modal',userReview)
+    // console.log('userReviewwwww from editreview modal',userReview)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -42,7 +42,7 @@ export default function EditReviewModal({ userReview, spotName, spotId }) {
             }
             const newReview = await dispatch(updateReview(userReview.id, userInput));
             if (newReview) {
-                console.log('created new review from postreviewmodal', newReview)
+                // console.log('created new review from postreviewmodal', newReview)
                 await dispatch(getAllReviewByUserId());
                 // // console.log('sssssssssss','Closing modal'); 
                 // await dispatch(getOneSpot(spotId))

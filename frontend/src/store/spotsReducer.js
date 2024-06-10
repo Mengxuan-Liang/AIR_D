@@ -54,7 +54,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
         if(response.ok){
             // PARSE response get ID
             const newSpot = await response.json();
-            console.log('new spot without images',newSpot)
+            // console.log('new spot without images',newSpot)
             const spotImages = [];
             // POST prevIMG
             const previewImageRes = await csrfFetch(`/api/spots/${id}/images`, {
@@ -139,7 +139,7 @@ export const createNewSpot = (spot, previewImage, images) => async (dispatch) =>
     if(response.ok){
         // PARSE response get ID
         const newSpot = await response.json();
-        console.log('new spot without images',newSpot.id)
+        // console.log('new spot without images',newSpot.id)
         const spotImages = [];
         // POST prevIMG
         const previewImageRes = await csrfFetch(`/api/spots/${newSpot.id}/images`, {
@@ -152,7 +152,7 @@ export const createNewSpot = (spot, previewImage, images) => async (dispatch) =>
         // PARSE & PUSH prevIMG 
         if(previewImageRes.ok){
             const newPrevImg = await previewImageRes.json();
-            console.log('preview image response from spotReducer',newPrevImg)
+            // console.log('preview image response from spotReducer',newPrevImg)
             spotImages.push(newPrevImg);
         }
         // CHECK OTHER IMG

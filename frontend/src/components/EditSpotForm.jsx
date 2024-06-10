@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {  createNewSpot, getAllSpots, getOneSpot, updateSpot } from "../store/spotsReducer";
+import {  updateSpot } from "../store/spotsReducer";
 
 
 

@@ -2,23 +2,20 @@ import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { useEffect } from 'react';
 import { getAllSpots } from '../store/spotsReducer';
-import SpotLists from './SpotLists';
+// import SpotLists from './SpotLists';
 import  './SpotLists.css';
 function Landing() {
     const navigate = useNavigate();
     const data = useSelector(state => state.spotsState.spots);
-    console.log(data)
-    const dataArr = Object.values(data);
-    console.log(dataArr)
-    // const dataArr = Object.va
-    // const dataArr = data.spots.Spots;
-    // console.log(data.spots.Spots)
+    // console.log(data)
+    // const dataArr = Object.values(data);
+  
 
     const dispatch = useDispatch();
 
     useEffect(()=> {
         dispatch(getAllSpots())
-    },[])
+    },[dispatch])
 
     return (
         <>

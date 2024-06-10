@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAllSpots, removeSpot } from '../store/spotsReducer';
+import { getAllSpots } from '../store/spotsReducer';
 import SpotLists from './SpotLists';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import OpenModalButton from './OpenModalButton/OpenModalButton';
 import DeleteSpotModal from './DeleteSpotModal';
-import CreateSpotForm from './CreateSpotForm';
+// import CreateSpotForm from './CreateSpotForm';
 export default function CurrentSpots() {
     const navigate = useNavigate();
     const data = useSelector(state => state.spotsState.allSpots);

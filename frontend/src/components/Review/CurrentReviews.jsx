@@ -14,9 +14,9 @@ export default function CurrentReviews() {
     const reviews = Object.values(currentUserAllReviews);
 
     const spots = useSelector(state => state.spotsState.allSpots);
-    console.log('get all spots', spots);
+    // console.log('get all spots', spots);
     // const spot = Object.values(spotState);
-    console.log('alllllll reviews from currentRevies',currentUserAllReviews)
+    // console.log('alllllll reviews from currentRevies',currentUserAllReviews)
     // console.log('spots from currentRevies',spots)
     useEffect(()=> {
         dispatch(getAllSpots())

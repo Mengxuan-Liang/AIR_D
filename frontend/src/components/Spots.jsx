@@ -5,10 +5,10 @@ import { getAllSpots } from '../store/spotsReducer';
 import SpotLists from './SpotLists';
 import  './SpotLists.css';
 function Spots() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const data = useSelector(state => state.spotsState.allSpots);
     // const data = useSelector(state => state.spotsState);
-    console.log('this is the data from Spot.jsx',data)
+    // console.log('this is the data from Spot.jsx',data)
     const dataArr = Object.values(data);
     // console.log(dataArr)
     // const dataArr = Object.va

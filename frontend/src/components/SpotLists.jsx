@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import './SpotLists.css'
-import SpotDetails from "./SpotDetails";
-import {useDispatch, useSelector} from 'react-redux'
-import { useEffect } from "react";
-import { getAllSpots } from "../store/spotsReducer";
+// import SpotDetails from "./SpotDetails";
+// import {useDispatch, useSelector} from 'react-redux'
+// import { useEffect } from "react";
+// import { getAllSpots } from "../store/spotsReducer";
 
 
 export default function SpotLists({data}) {
@@ -11,7 +11,7 @@ export default function SpotLists({data}) {
 
     const {city, state, price, id, previewImage, name} = data
     // console.log('this is the Owner from SpotLists.jsx', Owner)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     return (
     <div >
         <div className="spot-container">

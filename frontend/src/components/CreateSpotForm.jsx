@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import {  createNewSpot, getAllSpots, getOneSpot } from "../store/spotsReducer";
+import { useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import {  createNewSpot } from "../store/spotsReducer";
 
 
 
@@ -41,16 +41,16 @@ function CreateSpotForm() {
             if (!city) error.city = 'City is required'
             if (!state) error.state = 'State is required'
             if (!name) error.name = 'Name is required'
-            if (!description || description.length < 30) error.description = 'Description must be at least 30 charactors'
+            if (!description || description.length < 30) error.description = 'Description needs a minimum of 30 characters'
             if (!price || price <= 0) error.price = 'Price per day is required and shoud be a positive number'
             const checkImageUrl = url => {
                 return (url && (url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg')));
             }
             if (!previewImage || !checkImageUrl(previewImage)) error.previewImage = 'Preview image is required'
-            if (!imageUrl1 && !checkImageUrl(imageUrl1)) error.imageUrl1 = 'Image URL must end in .png, .jpg, or .jpeg'
-            if (!imageUrl2 && !checkImageUrl(imageUrl2)) error.imageUrl2 = 'Image URL must end in .png, .jpg, or .jpeg'
-            if (!imageUrl3 && !checkImageUrl(imageUrl3)) error.imageUrl3 = 'Image URL must end in .png, .jpg, or .jpeg'
-            if (!imageUrl4 && !checkImageUrl(imageUrl4)) error.imageUrl4 = 'Image URL must end in .png, .jpg, or .jpeg'  
+            if (imageUrl1 && !checkImageUrl(imageUrl1)) error.imageUrl1 = 'Image URL must end in .png, .jpg, or .jpeg'
+            if (imageUrl2 && !checkImageUrl(imageUrl2)) error.imageUrl2 = 'Image URL must end in .png, .jpg, or .jpeg'
+            if (imageUrl3 && !checkImageUrl(imageUrl3)) error.imageUrl3 = 'Image URL must end in .png, .jpg, or .jpeg'
+            if (imageUrl4 && !checkImageUrl(imageUrl4)) error.imageUrl4 = 'Image URL must end in .png, .jpg, or .jpeg'  
             
             return error;
         };
@@ -59,7 +59,7 @@ function CreateSpotForm() {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, country, address, city, state, name, description, price, previewImage, hasSubmitted]);
+    }, [dispatch, country, address, city, state, name, description, price, previewImage, imageUrl1, imageUrl2, imageUrl3, imageUrl4, hasSubmitted]);
 
     // SUBMITION
     const handleSubmit = async (e) => {
@@ -180,7 +180,7 @@ function CreateSpotForm() {
                         >
                         </textarea>
                         <div className="error" >
-                            {error.discription && <p>{error.discription}</p>}
+                            {error.description && <p>{error.description}</p>}
                         </div>
                     </label>
                     <hr></hr>
@@ -236,6 +236,9 @@ function CreateSpotForm() {
                             onChange={e => setImageUrl1(e.target.value)}
                         >
                         </input>
+                        <div className="error" >
+                            {error.imageUrl1 && <p>{error.imageUrl1}</p>}
+                        </div>
                     </label>
                     <label>
                         <input
@@ -245,6 +248,9 @@ function CreateSpotForm() {
                             onChange={e => setImageUrl2(e.target.value)}
                         >
                         </input>
+                        <div className="error" >
+                            {error.imageUrl2 && <p>{error.imageUrl2}</p>}
+                        </div>
                     </label>
                     <label>
                         <input
@@ -254,6 +260,9 @@ function CreateSpotForm() {
                             onChange={e => setImageUrl3(e.target.value)}
                         >
                         </input>
+                        <div className="error" >
+                            {error.imageUrl3 && <p>{error.imageUrl3}</p>}
+                        </div>
                     </label>
                     <label>
                         <input
@@ -263,6 +272,9 @@ function CreateSpotForm() {
                             onChange={e => setImageUrl4(e.target.value)}
                         >
                         </input>
+                        <div className="error" >
+                            {error.imageUrl4 && <p>{error.imageUrl4}</p>}
+                        </div>
                     </label>
                     <button
                         type="submit"

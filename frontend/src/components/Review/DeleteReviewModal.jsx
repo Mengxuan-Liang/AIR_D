@@ -1,7 +1,7 @@
 import { useModal } from "../../context/Modal"
 import {useDispatch} from 'react-redux'
 import { getAllReviews, removeReview } from "../../store/reviewReducer"
-import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
+import { getOneSpot } from "../../store/spotsReducer"
 
 
 export default function DeleteReviewModal({reviewId, spotId}) {
