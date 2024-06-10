@@ -1,13 +1,18 @@
 // import { useSelector } from 'react-redux';
 import { useModal } from "../../context/Modal"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
 // import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { GoStarFill } from "react-icons/go";
+import './PostReviewModal.css';
+
 
 
 export default function EditReviewModal({ userReview, spotName }) {
     // console.log('userReviewwwww from editreview modal',userReview)
+    const sessionUserId = useSelector(state => state.session.user.id)
+    // console.log(session)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -20,8 +25,8 @@ export default function EditReviewModal({ userReview, spotName }) {
         const validate = () => {
             const error = {};
             if (!review) error.review = 'Review is required';
-            // if (!stars || (typeof (stars) !== 'number') || stars < 1 || stars > 5) error.stars = 'Star rating must be an integer from 1 to 5';
-            // if (review && review.userId === session.user.id) error.reviewed = 'You can only make one review for this spot'
+            if (!stars || stars < 1 || stars > 5) error.stars = 'Star rating must be an integer from 1 to 5';
+            if (review && review.userId === sessionUserId) error.reviewed = 'You can only make one review for this spot'
             return error;
         }
         if (hasSubmitted) {
@@ -51,6 +56,12 @@ export default function EditReviewModal({ userReview, spotName }) {
 
         }
     }
+
+    const [activeRating, setActiveRating] = useState(stars);
+    useEffect(() => {
+        setActiveRating(stars);
+    }, [stars]);
+
 
     return (
         <div>
@@ -83,6 +94,49 @@ export default function EditReviewModal({ userReview, spotName }) {
                 </div>
 
             </label>
+
+            <div className="rating-input">
+                    <div
+                        className={activeRating >= 1 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
+                        onClick={() => { if (!disabled) onChange(1) }}
+                    >
+                        <GoStarFill />
+                    </div>
+                    <div
+                        className={activeRating >= 2 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
+                        onClick={() => { if (!disabled) onChange(1) }}
+                    >
+                        <GoStarFill />
+                    </div>
+                    <div
+                        className={activeRating >= 3 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
+                        onClick={() => { if (!disabled) onChange(1) }}
+                    >
+                        <GoStarFill />
+                    </div>
+                    <div
+                        className={activeRating >= 4 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
+                        onClick={() => { if (!disabled) onChange(1) }}
+                    >
+                        <GoStarFill />
+                    </div>
+                    <div
+                        className={activeRating >= 5 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
+                        onClick={() => { if (!disabled) onChange(1) }}
+                    >
+                        <GoStarFill />
+                    </div>
+                </div>
 
             <div>
                 <button onClick={handleSubmit}>Update Your Review</button>

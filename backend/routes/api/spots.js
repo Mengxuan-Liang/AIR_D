@@ -93,8 +93,8 @@ router.get('/', async(req, res, next)=> {
     // Query spots with filters and pagination
     const spots = await Spot.findAll({
         where: filters,
-        // limit: size,
-        // offset: size * (page - 1)
+        limit: size,
+        offset: size * (page - 1)
     });
     await avgRating(spots);
     await previewImage(spots);
@@ -321,9 +321,10 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     const totalSpot = await Spot.findAll({
         // where: {ownerId: userId}
     });
-    const length = totalSpot.length;
+    // const length = totalSpot.length;
 
-    if (spotId > length || spotId <= 0) {
+    // if (spotId > length || spotId <= 0) {
+    if (!spotId || spotId <= 0) {
         res.status(404);
         return res.json({ "message": "Spot couldn't be found" })
     }

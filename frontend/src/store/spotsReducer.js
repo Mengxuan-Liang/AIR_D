@@ -50,7 +50,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
             headers:  { 'Content-Type': 'application/json' },
             body: JSON.stringify(spot)
         });
-    
+    console.log(response)
         if(response.ok){
             // PARSE response get ID
             const newSpot = await response.json();
@@ -58,7 +58,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
             const spotImages = [];
             // POST prevIMG
             const previewImageRes = await csrfFetch(`/api/spots/${id}/images`, {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },

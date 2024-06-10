@@ -4,6 +4,7 @@ import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+
 // import Spots from '../Spots';
 import './Navigation.css';
 // import CreateSpotForm from '../CreateSpotForm';
@@ -56,7 +57,9 @@ function Navigation({ isLoaded }) {
               height:'80px'
             }}
               className='navbar-logo'
-              src='../dist/assets/IMG_0228.JPG'
+              // src='../../images/IMG_0228.JPG'
+              src='../../dist/favicon.ico'
+              // src='../../dist/IMG_0228-868d335f'
               alt='dog-logo-image'
               onClick={()=> {
                 navigate('/')
