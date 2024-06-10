@@ -289,15 +289,11 @@ function CreateSpotForm() {
                             setState('MA');
                             setCountry('US')
                             setName('HEY PAW')
-                            setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+                            setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
                             setPrice(1);
                             setLat(1)
                             setLng(1)
                             setPreviewImage('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
-                            setImageUrl1('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717269282/816212804889b08e4d1fc957512dc5f7_r5oqyk.jpg')
-                            setImageUrl2('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368587/dog_house_by_ai_visions_dgmjcu1-pre_uyxfv8.jpg')
-                            setImageUrl3('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
-                            setImageUrl4('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
                         }}
                     >
                         {" "}
