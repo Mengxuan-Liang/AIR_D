@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux'
 import { getAllReviews, addReview } from "../../store/reviewReducer"
 import { getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react";
-import { GoStarFill } from "react-icons/go";
-import './PostReviewModal.css';
+// import { GoStarFill } from "react-icons/go";
+// import './PostReviewModal.css';
 
 
 export default function PostReviewModal({ spotId }) {
@@ -28,7 +28,7 @@ export default function PostReviewModal({ spotId }) {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, stars, review, hasSubmitted])
+    }, [dispatch, stars, review,hasSubmitted])
 
 
     const handleSubmit = async (e) => {
@@ -51,13 +51,13 @@ export default function PostReviewModal({ spotId }) {
 
         }
     }
-    const isButtonDisabled = review.length < 10 || stars < 1
+    const isButtonDisabled = review.length<10 || stars < 1 
 
     // stars
-    const [activeRating, setActiveRating] = useState(stars);
-    useEffect(() => {
-        setActiveRating(stars);
-    }, [stars]);
+    // const [activeRating, setActiveRating] = useState(stars);
+    // useEffect(() => {
+    //     setActiveRating(stars);
+    //   }, [stars]);
 
     return (
         <div>
@@ -82,48 +82,34 @@ export default function PostReviewModal({ spotId }) {
                     onChange={e => setStars(e.target.value)}
                 >
                 </input>
-                <div className="rating-input">
+                {/* <div className="rating-input">
                     <div
                         className={activeRating >= 1 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
-                        onClick={() => { if (!disabled) onChange(1) }}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1)} }
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars)} }
+                        onClick={() => { if (!disabled) onChange(1)} }
                     >
-                        <GoStarFill />
+                    <GoStarFill />
                     </div>
-                    <div
-                        className={activeRating >= 2 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
-                        onClick={() => { if (!disabled) onChange(1) }}
+                    <div 
+                    className={activeRating >= 1 ? "filled" : "empty"}
+                        onMouseEnter={() => { if (!disabled) setActiveRating(1)} }
+                        onMouseLeave={() => { if (!disabled) setActiveRating(stars)} }
+                        onClick={() => { if (!disabled) onChange(1)} }
+                    
                     >
-                        <GoStarFill />
+                    <GoStarFill />
                     </div>
-                    <div
-                        className={activeRating >= 3 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
-                        onClick={() => { if (!disabled) onChange(1) }}
-                    >
-                        <GoStarFill />
+                    <div className="empty">
+                    <GoStarFill />
                     </div>
-                    <div
-                        className={activeRating >= 4 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
-                        onClick={() => { if (!disabled) onChange(1) }}
-                    >
-                        <GoStarFill />
+                    <div className="empty">
+                    <GoStarFill />
                     </div>
-                    <div
-                        className={activeRating >= 5 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars) }}
-                        onClick={() => { if (!disabled) onChange(1) }}
-                    >
-                        <GoStarFill />
+                    <div className="empty">
+                    <GoStarFill />
                     </div>
-                </div>
+                </div> */}
                 <div className="error" >
                     {error.stars && <p>{error.stars}</p>}
                 </div>

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
 // import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react";
-import { GoStarFill } from "react-icons/go";
-import './PostReviewModal.css';
+// import { GoStarFill } from "react-icons/go";
+// import './PostReviewModal.css';
 
 
 
@@ -57,10 +57,10 @@ export default function EditReviewModal({ userReview, spotName }) {
         }
     }
 
-    const [activeRating, setActiveRating] = useState(stars);
-    useEffect(() => {
-        setActiveRating(stars);
-    }, [stars]);
+    // const [activeRating, setActiveRating] = useState(stars);
+    // useEffect(() => {
+    //     setActiveRating(stars);
+    // }, [stars]);
 
 
     return (
@@ -95,7 +95,7 @@ export default function EditReviewModal({ userReview, spotName }) {
 
             </label>
 
-            <div className="rating-input">
+            {/* <div className="rating-input">
                     <div
                         className={activeRating >= 1 ? "filled" : "empty"}
                         onMouseEnter={() => { if (!disabled) setActiveRating(1) }}
@@ -136,7 +136,7 @@ export default function EditReviewModal({ userReview, spotName }) {
                     >
                         <GoStarFill />
                     </div>
-                </div>
+                </div> */}
 
             <div>
                 <button onClick={handleSubmit}>Update Your Review</button>
