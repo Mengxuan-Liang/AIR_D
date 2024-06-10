@@ -61,7 +61,7 @@ function EditSpotForm() {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, country, address, city, state, name, description, price, previewImage, hasSubmitted]);
+    }, [dispatch, country, address, city, state, name, description, price, previewImage,imageUrl1,imageUrl2,imageUrl3,imageUrl4,hasSubmitted]);
 
     // SUBMITION
     const handleSubmit = async (e) => {

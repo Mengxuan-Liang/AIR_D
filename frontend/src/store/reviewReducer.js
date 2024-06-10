@@ -34,7 +34,7 @@ export const loadReviews = (reviews) => ({
     reviews
 })
 
-export const getAllReviewByUserId = (userId) => async(dispatch) => {
+export const getAllReviewByUserId = () => async(dispatch) => {
     const res = await fetch('/api/reviews/current');
     if(res.ok){
         const data = await res.json();
@@ -58,7 +58,7 @@ export const getAllReviews = (spotId) => async (dispatch) => {
 }
 
 export const updateReview = (reviewId, review) => async(dispatch) => {
-    try {
+    
         const res = await csrfFetch(`/api/reviews/${reviewId}`, {
             method: 'PUT',
             headers:  { 'Content-Type': 'application/json' },
@@ -73,13 +73,11 @@ export const updateReview = (reviewId, review) => async(dispatch) => {
             const error = await res.json();
             return new Error(error)
         }
-    } catch(error){
-        throw error;
-    }
+    
 }
 
 export const addReview = (spotId, review) => async(dispatch) => {
-    try {
+    
         const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
             method: 'POST',
             headers:  { 'Content-Type': 'application/json' },
@@ -94,9 +92,7 @@ export const addReview = (spotId, review) => async(dispatch) => {
             const error = await res.json();
             return new Error(error)
         }
-    } catch(error){
-        throw error;
-    }
+   
 }
 
 

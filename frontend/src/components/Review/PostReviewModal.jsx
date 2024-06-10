@@ -26,7 +26,7 @@ export default function PostReviewModal({ spotId }) {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, stars, review])
+    }, [dispatch, stars, review,hasSubmitted])
 
 
     const handleSubmit = async (e) => {

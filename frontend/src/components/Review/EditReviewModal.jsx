@@ -6,7 +6,7 @@ import { updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
 import { useEffect, useState } from "react"
 
 
-export default function EditReviewModal({ userReview, spotName, spotId }) {
+export default function EditReviewModal({ userReview, spotName }) {
     // console.log('userReviewwwww from editreview modal',userReview)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
@@ -28,7 +28,7 @@ export default function EditReviewModal({ userReview, spotName, spotId }) {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, stars, review])
+    }, [dispatch, stars, review, hasSubmitted])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

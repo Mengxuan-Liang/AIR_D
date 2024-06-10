@@ -1,12 +1,12 @@
 import {useNavigate} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import { getAllSpots } from '../store/spotsReducer';
 // import SpotLists from './SpotLists';
 import  './SpotLists.css';
 function Landing() {
     const navigate = useNavigate();
-    const data = useSelector(state => state.spotsState.spots);
+    // const data = useSelector(state => state.spotsState.spots);
     // console.log(data)
     // const dataArr = Object.values(data);
   
