@@ -247,9 +247,9 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     const totalSpot = await Spot.findAll({
         // where: {ownerId: userId}
     });
-    const length = totalSpot.length;
+    // const length = totalSpot.length;
 
-    if (spotId > length || spotId <= 0) {
+    if (currentSpot === null || spotId <= 0) {
         res.status(404);
         return res.json({ "message": "Spot couldn't be found" })
     }

@@ -10,6 +10,9 @@ import Spots from './components/Spots';
 import Landing from './components/Landing';
 import SpotDetails from './components/SpotDetails';
 import CreateSpotForm from './components/CreateSpotForm';
+import CurrentSpots from './components/CurrentSpots';
+import EditSpotForm from './components/EditSpotForm';
+import CurrentReviews from './components/Review/CurrentReviews';
 function Layout() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,6 +52,19 @@ const router = createBrowserRouter([
       {
         path: 'spots/new',
         element: < CreateSpotForm />
+      },
+      {
+        path:'spots/current',
+        element: <CurrentSpots />
+      },
+      {
+        path: 'spots/:spotId/edit',
+        // element: < CreateSpotForm /> 
+        element: < EditSpotForm /> 
+      },
+      {
+        path:'reviews/current',
+        element: <CurrentReviews />
       },
       // {
       //   path: 'login',

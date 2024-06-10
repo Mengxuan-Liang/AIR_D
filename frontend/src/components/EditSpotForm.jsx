@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import {  createNewSpot, getAllSpots, getOneSpot } from "../store/spotsReducer";
+import {  createNewSpot, getAllSpots, getOneSpot, updateSpot } from "../store/spotsReducer";
 
 
 
-function CreateSpotForm() {
-
+function EditSpotForm() {
+    const {spotId} = useParams()
+    const currentSpot = useSelector(state=> state.spotsState.allSpots[spotId])
+    // console.log('spot from editspotform',currentSpot)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     // const [isLoaded, setIsLoaded] = useState(false);
 
     // STATES for user input
-    const [country, setCountry] = useState('');
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [lat, setLat] = useState('');
-    const [lng, setLng] = useState("");
-    const [description, setDescription] = useState("");
-    const [name, setName] = useState("");
-    const [price, setPrice] = useState("");
-    const [previewImage, setPreviewImage] = useState("");
-    const [imageUrl1, setImageUrl1] = useState("");
-    const [imageUrl2, setImageUrl2] = useState("");
-    const [imageUrl3, setImageUrl3] = useState("");
-    const [imageUrl4, setImageUrl4] = useState("");
+    const [country, setCountry] = useState(currentSpot?.country);
+    const [address, setAddress] = useState(currentSpot?.address);
+    const [city, setCity] = useState(currentSpot?.city);
+    const [state, setState] = useState(currentSpot?.state);
+    const [lat, setLat] = useState(currentSpot?.lat);
+    const [lng, setLng] = useState(currentSpot?.lng);
+    const [description, setDescription] = useState(currentSpot?.description);
+    const [name, setName] = useState(currentSpot?.name);
+    const [price, setPrice] = useState(currentSpot?.price);
+    const [previewImage, setPreviewImage] = useState(currentSpot?.previewImage);
+    const [imageUrl1, setImageUrl1] = useState(currentSpot?.imageUrl1);
+    const [imageUrl2, setImageUrl2] = useState(currentSpot?.imageUrl2);
+    const [imageUrl3, setImageUrl3] = useState(currentSpot?.imageUrl3);
+    const [imageUrl4, setImageUrl4] = useState(currentSpot?.imageUrl4);
     // STATES for error and submition
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [error, setError] = useState({});
@@ -83,7 +85,8 @@ function CreateSpotForm() {
                 lng,
             };
            
-            const response = await dispatch(createNewSpot(newSpot, previewImage, [imageUrl1, imageUrl2, imageUrl3, imageUrl4]));
+            // const response = await dispatch(createNewSpot(newSpot, previewImage, [imageUrl1, imageUrl2, imageUrl3, imageUrl4]));
+            const response = await dispatch(updateSpot(currentSpot.id, newSpot, previewImage, [imageUrl1, imageUrl2, imageUrl3, imageUrl4]));
 
             if(response && response.id) navigate(`/spots/${response.id}`);
         }
@@ -299,7 +302,7 @@ function CreateSpotForm() {
 
 
 
-export default CreateSpotForm;
+export default EditSpotForm;
 
 
 

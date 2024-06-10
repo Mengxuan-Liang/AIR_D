@@ -11,8 +11,14 @@ import { getAllReviews } from '../store/reviewReducer';
 import DeleteReviewModal from './Review/DeleteReviewModal'
 import LoginFormModal from './LoginFormModal/LoginFormModal';
 import OpenModalButton from './OpenModalButton/OpenModalButton';
+import { useState } from 'react';
+import PostReviewModal from './Review/PostReviewModal';
 
 export default function SpotDetails() {
+    const spot = useSelector(state => state.spotsState.currentSpot[0]);
+    // const [spot, setSpot] = useState(initialSpot);
+
+
 
     const sessionUser = useSelector(state => state.session)
     const sessionUserId = sessionUser?.user?.id;
@@ -20,11 +26,11 @@ export default function SpotDetails() {
     // get SPOT by id:
     const { spotId } = useParams();
     const dispatch = useDispatch();
-    const spot = useSelector(state => state.spotsState.currentSpot[0]);
     // console.log('this is the spot from spot details',spot)
 
     //get all REVIEWS by spotId:
-    const reviews = useSelector(state => state.reviewsState.Reviews);
+    const reviewsState = useSelector(state => state.reviewsState);
+    const reviews = Object.values(reviewsState)
     console.log('this is the review from spot details', reviews)
 
     useEffect(() => {
@@ -38,7 +44,7 @@ export default function SpotDetails() {
     }, [dispatch, spotId]);
 
 
-   
+
     useEffect(() => {
         const fetchData = async () => {
             await Promise.all([
@@ -48,8 +54,8 @@ export default function SpotDetails() {
         fetchData()
     }, [dispatch, spotId])
 
-   
-   
+    // const [avgRating, setAvgRating] = useState(spot.avgRating)
+
     return (
         <div>
             <div id='spot-detail-container'>
@@ -110,10 +116,10 @@ export default function SpotDetails() {
                             <span>
                                 <FaStar />{' '}
                                 {
-                                    (spot?.avgRating===null || isNaN(spot?.avgRating) || spot?.avgRating === undefined) ? 'New' : spot?.avgRating.toFixed(2)
+                                    (spot?.avgRating === null || isNaN(spot?.avgRating) || spot?.avgRating === undefined) ? 'New' : spot?.avgRating.toFixed(2)
                                 }{' '}
                                 {
-                                    spot?.avgRating===null || isNaN(spot?.avgRating) || spot?.avgRating === undefined ? '' : '·'
+                                    spot?.avgRating === null || isNaN(spot?.avgRating) || spot?.avgRating === undefined ? '' : '·'
                                 }
                                 {
                                     spot?.numReviews === 1 ? '1 review' : spot?.numReviews > 1 ? `${spot?.numReviews} reviews` : ''
@@ -133,11 +139,11 @@ export default function SpotDetails() {
                             <FaStar />
                         </div>
                         <div>
-                            {spot?.avgRating===null || isNaN(spot?.avgRating) || 
+                            {spot?.avgRating === null || isNaN(spot?.avgRating) ||
                                 spot?.avgRating === undefined
                                 ? "New"
                                 : spot?.avgRating.toFixed(2)}{" "}
-                            {spot?.avgRating===null ||isNaN(spot?.avgRating) ||
+                            {spot?.avgRating === null || isNaN(spot?.avgRating) ||
                                 spot?.avgRating === undefined
                                 ? ""
                                 : "·"}{" "}
@@ -147,6 +153,16 @@ export default function SpotDetails() {
                                     ? `${spot?.numReviews} reviews`
                                     : ""}
 
+                        </div>
+                        <div>
+                            {sessionUser && (spot?.Owner.id !== sessionUserId)&& (!reviews?.find(el=>el.userId===sessionUserId))&&(
+                                <div>
+                                    <OpenModalButton
+                                        buttonText={'Post Your Review'}
+                                        modalComponent={<PostReviewModal spotId={spotId} />}
+                                    />
+                                </div>
+                            )}
                         </div>
                     </span>
                 </div>
@@ -159,7 +175,7 @@ export default function SpotDetails() {
                         {reviews &&
                             reviews.length > 0 &&
                             reviews.map((review, index) => {
-                                const createdAtDate = new Date(review.createdAt);
+                                const createdAtDate = new Date(review?.createdAt);
                                 const month = createdAtDate.toLocaleString("default", {
                                     month: "long",
                                 });
@@ -167,31 +183,30 @@ export default function SpotDetails() {
 
                                 return (
                                     <>
-                                    <div key={index} className='actual-reviews'>
-                                        <div className='item' style={{ fontSize: '18px' }}>{review.User.firstName}</div>
-                                        <div className='item' style={{ fontSize: "14px" }}>{`${month} ${year}`}</div>
-                                        <div className='item' style={{ fontSize: "12px" }}>{review.review}</div>
-                                        <div>
-                                        {sessionUser && sessionUserId === review?.userId && (
+                                        <div key={index} className='actual-reviews'>
+                                            <div className='item' style={{ fontSize: '18px' }}>{review?.User?.firstName}</div>
+                                            <div className='item' style={{ fontSize: "14px" }}>{`${month} ${year}`}</div>
+                                            <div className='item' style={{ fontSize: "12px" }}>{review?.review}</div>
                                             <div>
-                                                <OpenModalButton
-                                                buttonText={'Delete'}
-                                                modalComponent={<DeleteReviewModal reviewId = {review?.id} spotId = {spotId} />}
-                                                />
+                                                {sessionUser && sessionUserId === review?.userId && (
+                                                    <div>
+                                                        <OpenModalButton
+                                                            buttonText={'Delete'}
+                                                            modalComponent={<DeleteReviewModal reviewId={review?.id} spotId={spotId} />}
+                                                        />
+                                                    </div>
+                                                )}
                                             </div>
-                                        )}
-                                    
                                         </div>
-                                    </div>
-                                    
-                                
-                                    
+
+
+
                                     </>
-                                   
+
                                 );
                             })
-                            
-                            }
+
+                        }
                     </div>
                 </div>
 
