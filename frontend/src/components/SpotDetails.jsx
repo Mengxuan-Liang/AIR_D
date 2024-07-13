@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getOneSpot } from '../store/spotsReducer';
 import { useEffect } from 'react';
 import './SpotDetails.css'
-import { FaStar } from "react-icons/fa6";
+// import { FaStar } from "react-icons/fa6";
+import { FaPaw } from 'react-icons/fa6';
 import { getAllReviews } from '../store/reviewReducer';
 import DeleteReviewModal from './Review/DeleteReviewModal'
 // import LoginFormModal from './LoginFormModal/LoginFormModal';
@@ -113,8 +114,25 @@ export default function SpotDetails() {
                     <div className='review-box'>
                         <div className='price-star-rating'>
                             <span >${spot?.price} night</span>
+                            <div className='rating-input'>
+                                <div className={spot?.avgRating >= 1 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 2 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 3 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 4 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 5 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                            </div>
                             <span>
-                                <FaStar />{' '}
+                                {/* <FaPaw />{' '} */}
                                 {
                                     (spot?.avgRating === null || isNaN(spot?.avgRating) || spot?.avgRating === undefined) ? 'New' : spot?.avgRating.toFixed(2)
                                 }{' '}
@@ -135,9 +153,23 @@ export default function SpotDetails() {
                 </div>
                 <div className='down-part-header'>
                     <span className='down-part-inner-container'>
-                        <div>
-                            <FaStar />
-                        </div>
+                    <div className='rating-input'>
+                                <div className={spot?.avgRating >= 1 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 2 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 3 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 4 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                                <div className={spot?.avgRating >= 5 ? 'filled':'empty'}>
+                                    <FaPaw/>
+                                </div>
+                            </div>
                         <div>
                             {spot?.avgRating === null || isNaN(spot?.avgRating) ||
                                 spot?.avgRating === undefined

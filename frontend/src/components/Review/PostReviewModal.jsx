@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { getAllReviews, addReview } from "../../store/reviewReducer"
 import { getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react";
+import { FaPaw } from 'react-icons/fa6';
 // import { GoStarFill } from "react-icons/go";
 // import './PostReviewModal.css';
 
@@ -28,7 +29,7 @@ export default function PostReviewModal({ spotId }) {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, stars, review,hasSubmitted])
+    }, [dispatch, stars, review, hasSubmitted])
 
 
     const handleSubmit = async (e) => {
@@ -51,13 +52,16 @@ export default function PostReviewModal({ spotId }) {
 
         }
     }
-    const isButtonDisabled = review.length<10 || stars < 1 
+    const isButtonDisabled = review.length < 10 || stars < 1
 
-    // stars
-    // const [activeRating, setActiveRating] = useState(stars);
-    // useEffect(() => {
-    //     setActiveRating(stars);
-    //   }, [stars]);
+    //paw icon with hover effect
+    const [activeRating, setActiveRating] = useState(stars);
+    useEffect(() => {
+        setActiveRating(stars);
+    }, [stars]);
+    const onChange = (number) => {
+        setStars(parseInt(number))
+    }
 
     return (
         <div>
@@ -74,48 +78,57 @@ export default function PostReviewModal({ spotId }) {
                     {error.review && <p>{error.review}</p>}
                 </div>
             </label>
-            <label>
+            {/* <label>
                 Star
                 <input
                     type="number"
                     value={stars}
                     onChange={e => setStars(e.target.value)}
                 >
-                </input>
-                {/* <div className="rating-input">
-                    <div
-                        className={activeRating >= 1 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1)} }
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars)} }
-                        onClick={() => { if (!disabled) onChange(1)} }
-                    >
-                    <GoStarFill />
-                    </div>
-                    <div 
-                    className={activeRating >= 1 ? "filled" : "empty"}
-                        onMouseEnter={() => { if (!disabled) setActiveRating(1)} }
-                        onMouseLeave={() => { if (!disabled) setActiveRating(stars)} }
-                        onClick={() => { if (!disabled) onChange(1)} }
-                    
-                    >
-                    <GoStarFill />
-                    </div>
-                    <div className="empty">
-                    <GoStarFill />
-                    </div>
-                    <div className="empty">
-                    <GoStarFill />
-                    </div>
-                    <div className="empty">
-                    <GoStarFill />
-                    </div>
-                </div> */}
-                <div className="error" >
-                    {error.stars && <p>{error.stars}</p>}
+                </input> */}
+
+            <div className="error" >
+                {error.stars && <p>{error.stars}</p>}
+            </div>
+
+            {/* </label> */}
+            <div className='rating-input'>
+                <div className={activeRating >= 1 ? 'filled' : 'empty'}
+                    onMouseEnter={() => setActiveRating(1)}
+                    onMouseLeave={() => setActiveRating(stars)}
+                    onClick={() => onChange(1)}
+                >
+                    <FaPaw />
                 </div>
-
-            </label>
-
+                <div className={activeRating >= 2 ? 'filled' : 'empty'}
+                    onMouseEnter={() => setActiveRating(2)}
+                    onMouseLeave={() => setActiveRating(stars)}
+                    onClick={() => onChange(2)}
+                >
+                    <FaPaw />
+                </div>
+                <div className={activeRating >= 3 ? 'filled' : 'empty'}
+                    onMouseEnter={() => setActiveRating(3)}
+                    onMouseLeave={() => setActiveRating(stars)}
+                    onClick={() => onChange(3)}
+                >
+                    <FaPaw />
+                </div>
+                <div className={activeRating >= 4 ? 'filled' : 'empty'}
+                    onMouseEnter={() => setActiveRating(4)}
+                    onMouseLeave={() => setActiveRating(stars)}
+                    onClick={() => onChange(4)}
+                >
+                    <FaPaw />
+                </div>
+                <div className={activeRating >= 5 ? 'filled' : 'empty'}
+                    onMouseEnter={() => setActiveRating(5)}
+                    onMouseLeave={() => setActiveRating(stars)}
+                    onClick={() => onChange(5)}
+                >
+                    <FaPaw />
+                </div>
+            </div>
             <div>
 
                 <button onClick={handleSubmit} disabled={isButtonDisabled}>Submit Your Review</button>

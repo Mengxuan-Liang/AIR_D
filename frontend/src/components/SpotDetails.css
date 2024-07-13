@@ -65,3 +65,12 @@ button {
 .item {
     padding: 5px;
 }
+.rating-input {
+    display: flex;
+}
+.rating-input .empty {
+    color: burlywood;
+}
+.rating-input .filled {
+    color: saddlebrown;
+}
