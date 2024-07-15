@@ -1,70 +1,95 @@
-.spot-detail-img {
+* {
+    /* margin: 0px;
+    padding: 0px; */
+    box-sizing: border-box;
+
+}
+.body-container {
     display: flex;
-    gap: 10px;
-    border: 2px rebeccapurple solid;
+    justify-content: center;
 }
 #spot-detail-container{
-    border: blue 2px solid;
+    /* border: blue 2px solid; */
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 1000px;
+}
+/*
+header: name & location
+*/
+.spot-text {
+    /* border: 2px yellow solid; */
+}
+/*
+img div
+*/
+.spot-detail-img {
+    display: flex;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px rebeccapurple solid; */
 }
 .left-img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-
-.spot-detail-img {
-    display: flex;
-    gap:10px;
-    align-items: center;
-    justify-content: center;
-}
-
 .img {
     display: flex;
     gap:10px;
+    border-radius: 3%;
 }
 
-@media screen and (min-width: 1000px) {
-    #spot-detail-container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-  }
-
+/*
+host info
+*/
 .spot-info-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    /* border: 2px purple solid; */
     align-items: center;
 }
-
-button {
-    width: 200px;
-    height: 30px;
-    background-color: pink;
+.review-box {
+    padding: 10px;
+    /* border: gray 1px solid; */
+    box-shadow: 3px 3px 4px pink;
+    border-radius: 10px;
 }
-
 .price-star-rating{
     display: flex;
     justify-content: space-between;
 }
-
-.review-box {
-    border: black 2px solid;
-    padding: 10px;
+.box-price{
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color:black;
 }
 
-.down-part-header {
-    border: 2px purple solid;
+/*
+review info
+*/
+.top-line-review {
+width: 100%;
+    border: 1px pink solid;
 }
-
+.review-title {
+    /* border: 2px greenyellow solid; */
+}
 .down-part-inner-container {
     display: flex;
     gap: 10px;
+    /* border: 2px green solid; */
 
 }
 .item {
     padding: 5px;
+    /* border: 2px green solid; */
 }
+/*
+general setting
+*/
 .rating-input {
     display: flex;
 }
@@ -74,3 +99,33 @@ button {
 .rating-input .filled {
     color: saddlebrown;
 }
+button {
+    width: 200px;
+    height: 30px;
+    background-color: pink;
+}
+@media screen and (max-width: 1000px) {
+   .spot-detail-img{
+    flex-direction: column;
+}
+.spot-info-container{
+       flex-direction: column;
+        align-items: flex-start;
+   }
+  }
+  /* @media (min-width: 768px) {
+    .spot-info-container {
+      flex-direction: row;
+    }
+
+    .price-star-rating {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .down-part-header {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  } */

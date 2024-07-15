@@ -1,19 +1,14 @@
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// import SpotLists from './SpotLists';
-// import Spots from './Spots';
-// import sessionReducer from '../store/session';
 import { getOneSpot } from '../store/spotsReducer';
 import { useEffect } from 'react';
-import './SpotDetails.css'
-// import { FaStar } from "react-icons/fa6";
 import { FaPaw } from 'react-icons/fa6';
 import { getAllReviews } from '../store/reviewReducer';
 import DeleteReviewModal from './Review/DeleteReviewModal'
-// import LoginFormModal from './LoginFormModal/LoginFormModal';
 import OpenModalButton from './OpenModalButton/OpenModalButton';
-// import { useState } from 'react';
 import PostReviewModal from './Review/PostReviewModal';
+import './SpotDetails.css'
+// import { FaStar } from "react-icons/fa6";
 
 export default function SpotDetails() {
     const spot = useSelector(state => state.spotsState.currentSpot[0]);
@@ -58,10 +53,10 @@ export default function SpotDetails() {
     // const [avgRating, setAvgRating] = useState(spot.avgRating)
 
     return (
-        <div>
+        <div className='body-container'>
             <div id='spot-detail-container'>
                 <div className='spot-text'>
-                    <h2>{spot?.name}</h2>
+                    <h2 style={{color:'black'}}>{spot?.name}</h2>
                     <span>{spot?.city}, </span>
                     <span>{spot?.state}, </span>
                     <span>{spot?.country}</span>
@@ -71,7 +66,7 @@ export default function SpotDetails() {
                         <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
-                            style={{ height: '310px' }}
+                            style={{ height: '510px',width:'100%', borderRadius: '3%' }}
                         >
                         </img>
                     </div>
@@ -79,28 +74,28 @@ export default function SpotDetails() {
                         <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
-                            style={{ height: '150px' }}
+                            style={{ height: '250px' }}
                             className='img'
                         >
                         </img>
                         <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
-                            style={{ height: '150px' }}
+                            style={{ height: '250px' }}
                             className='img'
                         >
                         </img>
                         <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
-                            style={{ height: '150px' }}
+                            style={{ height: '250px' }}
                             className='img'
                         >
                         </img>
                         <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
-                            style={{ height: '150px' }}
+                            style={{ height: '250px' }}
                             className='img'
                         >
                         </img>
@@ -108,12 +103,13 @@ export default function SpotDetails() {
                 </div>
                 <div className='spot-info-container'>
                     <div className='spot-info'>
-                        <h2>Hosted by {spot?.Owner.firstName} {spot?.Owner.lastName}</h2>
+                        <h2 style={{color:'black'}}>Hosted by {spot?.Owner.firstName} {spot?.Owner.lastName}</h2>
                         <p>{spot?.description}</p>
                     </div>
                     <div className='review-box'>
+                            <div className='box-price'>${spot?.price} night</div>
                         <div className='price-star-rating'>
-                            <span >${spot?.price} night</span>
+
                             <div className='rating-input'>
                                 <div className={spot?.avgRating >= 1 ? 'filled':'empty'}>
                                     <FaPaw/>
@@ -151,7 +147,8 @@ export default function SpotDetails() {
                         <br></br>
                     </div>
                 </div>
-                <div className='down-part-header'>
+                <hr className='top-line-review'/>
+                <div className='review-title'>
                     <span className='down-part-inner-container'>
                     <div className='rating-input'>
                                 <div className={spot?.avgRating >= 1 ? 'filled':'empty'}>
@@ -216,7 +213,7 @@ export default function SpotDetails() {
                                 return (
                                     <>
                                         <div key={index} className='actual-reviews'>
-                                            <div className='item' style={{ fontSize: '18px' }}>{review?.User?.firstName}</div>
+                                            <div className='item' style={{ fontSize: '18px',color:'black' }}>{review?.User?.firstName}</div>
                                             <div className='item' style={{ fontSize: "14px" }}>{`${month} ${year}`}</div>
                                             <div className='item' style={{ fontSize: "12px" }}>{review?.review}</div>
                                             <div>

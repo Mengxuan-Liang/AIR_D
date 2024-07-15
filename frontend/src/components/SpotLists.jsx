@@ -15,7 +15,7 @@ export default function SpotLists({data}) {
     return (
     <div >
         <div className="spot-container">
-            <Link to={`/spots/${id}`} >
+            <Link to={`/spots/${id}` } style={{textDecoration:'none'}} >
             <div className="spot-img" title={name}>
                 <img
                     src={previewImage}
@@ -31,7 +31,7 @@ export default function SpotLists({data}) {
                     // }}
                 />
                 <br></br>
-                <span>{city}, </span>
+                <span >{city}, </span>
                 <span>{state}</span>
                 <br></br>
                 <div>${price} night</div>

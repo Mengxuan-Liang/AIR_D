@@ -6,19 +6,19 @@
     /* display: flex;
     flex-wrap: wrap;
     flex-direction: row; */
-    border: red solid 2px;
+    /* border: red solid 2px; */
     /* width: 150px; */
     /* display: flex;
     flex-direction: column; */
     padding: 20px;
     box-sizing: border-box;
-    text-align: center;
+    text-align:left;
     flex: 1 1 100%;
 
 }
 
 .spots-container{
-    border: blue solid 2px;
+    /* border: blue solid 2px; */
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -34,8 +34,8 @@
 .spot-image {
     height: 150px;
     width: 150px;
-    
-    border: 2px green solid;
+
+    border: 2px black solid;
     /* width: 100%;
     height: auto;
     display: block; */

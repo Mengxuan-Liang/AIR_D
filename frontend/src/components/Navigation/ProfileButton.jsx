@@ -42,22 +42,27 @@ function ProfileButton({ user }) {
       <button onClick={toggleMenu}>
         <i className="fas fa-user-circle" />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
-        <li>Hello, {user.firstName}</li>
+      <div className={ulClassName} ref={ulRef}>
+        <div style={{textAlign:'center'}}>Hello, {user.firstName}</div>
         {/* <li>{user.firstName} {user.lastName}</li> */}
-        <li>{user.email}</li>
-        <NavLink to='/spots/current'>Manage Spots</NavLink>
+        <div style={{textAlign:'center'}}>{user.email}</div>
+        {/* <NavLink to='/spots/current'>Manage Spots</NavLink> */}
+        <button
+          onClick={()=> navigate('/spots/current')}
+        >Manage Spots</button>
         <br></br>
-        <NavLink to='/reviews/current'>Manage Reviews</NavLink>
-        <li>
-          <button 
+        {/* <NavLink to='/reviews/current'>Manage Reviews</NavLink> */}
+        <button
+          onClick={()=> navigate('/reviews/current')}
+        >Manage Reviews</button>
+        <div>
+          <button
           onClick={logout}>Log Out
           </button>
-        </li>
-      </ul>
+        </div>
+      </div>
     </>
   );
 }
 
 export default ProfileButton;
-

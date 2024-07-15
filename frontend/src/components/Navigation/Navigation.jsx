@@ -4,23 +4,46 @@ import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import './Navigation.css';
+import { GiDogHouse } from "react-icons/gi";
+// import from '../../images.';
 
 // import Spots from '../Spots';
-import './Navigation.css';
 // import CreateSpotForm from '../CreateSpotForm';
 
 function Navigation({ isLoaded }) {
+  const navigate = useNavigate()
   const sessionUser = useSelector(state => state.session.user);
 
   const sessionLinks = sessionUser ?
     (
       <>
-      <li>
-        <NavLink to='/spots/new'> Create A New Spot</NavLink>
-      </li>
-      <li>
+      <div>
+        {/* <NavLink to='/spots/new'> Create A New Spot</NavLink> */}
+        <GiDogHouse
+            style={{fontSize:'40px', color:'pink'}}
+            onClick={()=>navigate('/spots/new')}
+            />
+        {/* <button
+          className='create-spot-button'
+          onClick={()=> navigate('/spots/new')}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '16px',
+            padding: '10px 20px',
+            cursor: 'pointer'
+          }}
+
+        >
+           <GiDogHouse style={{ fontSize: '40px', marginBottom: '5px' }} />
+          Create A New Spot</button> */}
+      </div>
+      <div>
         <ProfileButton user={sessionUser} />
-      </li>
+      </div>
       </>
     ) : (
       <>
@@ -40,7 +63,7 @@ function Navigation({ isLoaded }) {
         {/* </li> */}
       </>
     );
-  const navigate = useNavigate();
+
   return (
     // <ul>
     //   <li>
@@ -52,14 +75,16 @@ function Navigation({ isLoaded }) {
       <div>
         <nav className='navbar-links-container'>
           <div className='navbar-subcontainer'>
-            <img 
+          {/* <GiDogHouse
+            style={{fontSize:'40px', color:'pink'}}
+            onClick={()=>navigate('/')}
+            /> */}
+            <img
             style={{
               height:'80px'
             }}
               className='navbar-logo'
-              // src='../../images/IMG_0228.JPG'
-              src='../../dist/favicon.ico'
-              // src='../../dist/IMG_0228-868d335f'
+              src='../../public/images/IMG_0229.png'
               alt='dog-logo-image'
               onClick={()=> {
                 navigate('/')
