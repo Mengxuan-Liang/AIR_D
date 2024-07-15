@@ -75,11 +75,11 @@ function Navigation({ isLoaded }) {
       <div>
         <nav className='navbar-links-container'>
           <div className='navbar-subcontainer'>
-          {/* <GiDogHouse
+          <GiDogHouse
             style={{fontSize:'40px', color:'pink'}}
             onClick={()=>navigate('/')}
-            /> */}
-            <img
+            />
+            {/* <img
             style={{
               height:'80px'
             }}
@@ -89,7 +89,7 @@ function Navigation({ isLoaded }) {
               onClick={()=> {
                 navigate('/')
             }}
-            />
+            /> */}
             <h2 className='navbar-title'>BarkBnB</h2>
           </div>
           {/* <NavLink to='login'>Log in</NavLink>
