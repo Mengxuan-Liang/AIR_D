@@ -3,3 +3,11 @@
     font-family: Billabong;
     src: url('./Billabong.ttf');
   }
+
+button {
+  border-radius: 6px;
+  cursor: pointer;
+}
+* {
+
+}

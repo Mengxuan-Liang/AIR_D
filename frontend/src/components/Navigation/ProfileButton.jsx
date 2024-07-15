@@ -40,10 +40,11 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle" />
+      <i style={{color:'palevioletred'}}className="fa-solid fa-dog" />{' '}<span style={{textAlign:'center'}}>Hello, {user.firstName}</span>
+
       </button>
       <div className={ulClassName} ref={ulRef}>
-        <div style={{textAlign:'center'}}>Hello, {user.firstName}</div>
+        {/* <div style={{textAlign:'center'}}>Hello, {user.firstName}</div> */}
         {/* <li>{user.firstName} {user.lastName}</li> */}
         <div style={{textAlign:'center'}}>{user.email}</div>
         {/* <NavLink to='/spots/current'>Manage Spots</NavLink> */}

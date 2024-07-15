@@ -10,11 +10,11 @@
     /* width: 150px; */
     /* display: flex;
     flex-direction: column; */
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
     text-align:left;
     flex: 1 1 100%;
-
+    margin-top: 20px;
 }
 
 .spots-container{
@@ -32,9 +32,9 @@
 } */
 
 .spot-image {
-    height: 150px;
-    width: 150px;
-
+    height: 250px;
+    width: 250px;
+    border-radius: 7%;
     border: 2px black solid;
     /* width: 100%;
     height: auto;

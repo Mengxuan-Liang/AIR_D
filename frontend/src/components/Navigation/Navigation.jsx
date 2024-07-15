@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import { GiDogHouse } from "react-icons/gi";
+import { SiDatadog } from "react-icons/si";
 // import from '../../images.';
 
 // import Spots from '../Spots';
@@ -21,7 +22,7 @@ function Navigation({ isLoaded }) {
       <div>
         {/* <NavLink to='/spots/new'> Create A New Spot</NavLink> */}
         <GiDogHouse
-            style={{fontSize:'40px', color:'pink'}}
+            style={{fontSize:'40px', color:'palevioletred', cursor:'pointer'}}
             onClick={()=>navigate('/spots/new')}
             />
         {/* <button
@@ -75,8 +76,8 @@ function Navigation({ isLoaded }) {
       <div>
         <nav className='navbar-links-container'>
           <div className='navbar-subcontainer'>
-          <GiDogHouse
-            style={{fontSize:'40px', color:'pink'}}
+          <SiDatadog
+            style={{fontSize:'40px', color:'palevioletred'}}
             onClick={()=>navigate('/')}
             />
             {/* <img
@@ -90,7 +91,7 @@ function Navigation({ isLoaded }) {
                 navigate('/')
             }}
             /> */}
-            <h2 className='navbar-title'>BarkBnB</h2>
+            <h2  onClick={()=>navigate('/')}className='navbar-title'>BarkBnB</h2>
           </div>
           {/* <NavLink to='login'>Log in</NavLink>
           <NavLink to='signup'>Sign up</NavLink> */}
