@@ -1,13 +1,22 @@
 /* TODO: Add sitewide styles */
-@font-face {
+/* @font-face {
     font-family: Billabong;
     src: url('./Billabong.ttf');
-  }
+  } */
+
+body {
+  font-family: 'Chewy', cursive;
+}
 
 button {
   border-radius: 6px;
   cursor: pointer;
+  font-family: 'Chewy', cursive;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
 }
-* {
 
+button:hover {
+  background-color: darkorange;
+  transform: scale(1.05); /* Slightly enlarge the button */
 }

@@ -22,7 +22,8 @@ function Navigation({ isLoaded }) {
       <div>
         {/* <NavLink to='/spots/new'> Create A New Spot</NavLink> */}
         <GiDogHouse
-            style={{fontSize:'40px', color:'palevioletred', cursor:'pointer'}}
+            className='dog-house'
+            style={{fontSize:'40px', cursor:'pointer'}}
             onClick={()=>navigate('/spots/new')}
             />
         {/* <button
@@ -77,7 +78,8 @@ function Navigation({ isLoaded }) {
         <nav className='navbar-links-container'>
           <div className='navbar-subcontainer'>
           <SiDatadog
-            style={{fontSize:'40px', color:'palevioletred'}}
+          className='dog-house'
+            style={{fontSize:'40px'}}
             onClick={()=>navigate('/')}
             />
             {/* <img
@@ -91,7 +93,7 @@ function Navigation({ isLoaded }) {
                 navigate('/')
             }}
             /> */}
-            <h2  onClick={()=>navigate('/')}className='navbar-title'>BarkBnB</h2>
+            <h2  onClick={()=>navigate('/')}className='dog-house navbar-title'>BarkBnB</h2>
           </div>
           {/* <NavLink to='login'>Log in</NavLink>
           <NavLink to='signup'>Sign up</NavLink> */}
