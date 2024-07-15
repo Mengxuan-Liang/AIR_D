@@ -35,7 +35,7 @@ export default function EditReviewModal({ userReview, spotName }) {
             const errors = validate();
             setError(errors)
         }
-    }, [dispatch, stars, review, hasSubmitted])
+    }, [dispatch, stars, review, hasSubmitted,sessionUserId])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -51,7 +51,7 @@ export default function EditReviewModal({ userReview, spotName }) {
             if (newReview) {
                 // console.log('created new review from postreviewmodal', newReview)
                 await dispatch(getAllReviewByUserId());
-                // // console.log('sssssssssss','Closing modal'); 
+                // // console.log('sssssssssss','Closing modal');
                 // await dispatch(getOneSpot(spotId))
             }
             await closeModal();
