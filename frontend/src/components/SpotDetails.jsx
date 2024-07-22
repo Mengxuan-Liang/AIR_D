@@ -51,7 +51,7 @@ export default function SpotDetails() {
     }, [dispatch, spotId])
 
     // const [avgRating, setAvgRating] = useState(spot.avgRating)
-
+    if(!spot) return <div>Fetching...</div>
     return (
         <div className='body-container'>
             <div id='spot-detail-container'>

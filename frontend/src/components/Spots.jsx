@@ -20,7 +20,7 @@ function Spots() {
     useEffect(()=> {
         dispatch(getAllSpots())
     },[dispatch])
-
+if(!data) return <div>Fetching...</div>
     return (
         <>
         {/* <div>
