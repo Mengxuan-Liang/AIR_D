@@ -11,17 +11,17 @@ export default function CurrentSpots() {
     const navigate = useNavigate();
     const data = useSelector(state => state.spotsState.allSpots);
     const currentUser = useSelector(state => state.session.user);
- 
+
     const dataArr = Object.values(data);
     const currentUserSpots = dataArr.filter(el => el.ownerId === currentUser.id);
-    
+
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch])
-
+    if(!data) return <div>Fetching...</div>
     return (
         <>
             <h2>Manage your spots</h2>

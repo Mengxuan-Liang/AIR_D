@@ -71,34 +71,60 @@ export default function SpotDetails() {
                         </img>
                     </div>
                     <div className='left-img'>
-                        <img
+                        {spot.SpotImages[1]?  <img
+                            src={spot?.SpotImages[1]?.url}
+                            alt='spot-image'
+                            style={{ height: '250px' }}
+                            className='img'
+                        >
+                        </img> :  <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
                             style={{ height: '250px' }}
                             className='img'
                         >
-                        </img>
-                        <img
+                        </img>}
+                        {spot.SpotImages[2]?  <img
+                            src={spot?.SpotImages[2]?.url}
+                            alt='spot-image'
+                            style={{ height: '250px' }}
+                            className='img'
+                        >
+                        </img> :  <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
                             style={{ height: '250px' }}
                             className='img'
                         >
-                        </img>
-                        <img
+                        </img>}
+                        {spot.SpotImages[3]?  <img
+                            src={spot?.SpotImages[3]?.url}
+                            alt='spot-image'
+                            style={{ height: '250px' }}
+                            className='img'
+                        >
+                        </img> :  <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
                             style={{ height: '250px' }}
                             className='img'
                         >
-                        </img>
-                        <img
+                        </img>}
+                        {spot.SpotImages[4]?  <img
+                            src={spot?.SpotImages[4]?.url}
+                            alt='spot-image'
+                            style={{ height: '250px' }}
+                            className='img'
+                        >
+                        </img> :  <img
                             src={spot?.SpotImages[0]?.url}
                             alt='spot-image'
                             style={{ height: '250px' }}
                             className='img'
                         >
-                        </img>
+                        </img>}
+
+
                     </div>
                 </div>
                 <div className='spot-info-container'>

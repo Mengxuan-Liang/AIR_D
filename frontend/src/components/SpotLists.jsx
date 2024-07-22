@@ -12,7 +12,7 @@ export default function SpotLists({data}) {
     const {city, state, price, id, previewImage, name} = data
     // console.log('this is the Owner from SpotLists.jsx', Owner)
     // const navigate = useNavigate()
-
+    if(!data) return <div>Fetching...</div>
     return (
     <div >
         <div className="spot-container">
