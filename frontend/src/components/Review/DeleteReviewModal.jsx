@@ -2,12 +2,13 @@ import { useModal } from "../../context/Modal"
 import {useDispatch} from 'react-redux'
 import { getAllReviews, removeReview } from "../../store/reviewReducer"
 import { getOneSpot } from "../../store/spotsReducer"
+import '../LoginFormModal/LoginForm.css'
 
 
 export default function DeleteReviewModal({reviewId, spotId}) {
     const dispatch= useDispatch()
     const {closeModal} = useModal()
-    
+
     // console.log('this is the review from delete review',review)
     // console.log('this is the review from delete review',spotId)
     const handleDelete = async (e) => {
@@ -15,13 +16,13 @@ export default function DeleteReviewModal({reviewId, spotId}) {
         await dispatch(removeReview(reviewId));
         await dispatch(getAllReviews(spotId));
         await dispatch(getOneSpot(spotId));
-        // console.log('sssssssssss','Closing modal'); 
+        // console.log('sssssssssss','Closing modal');
         // await dispatch(getOneSpot(spotId))
         await closeModal();
     }
 
     return (
-        <div>
+        <div className="log-sign-form">
             <h2>Confirm Delete</h2>
             <p>Are you sure you want to delete this review?</p>
 

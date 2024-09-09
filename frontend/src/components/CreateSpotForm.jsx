@@ -50,8 +50,8 @@ function CreateSpotForm() {
             if (imageUrl1 && !checkImageUrl(imageUrl1)) error.imageUrl1 = 'Image URL must end in .png, .jpg, or .jpeg'
             if (imageUrl2 && !checkImageUrl(imageUrl2)) error.imageUrl2 = 'Image URL must end in .png, .jpg, or .jpeg'
             if (imageUrl3 && !checkImageUrl(imageUrl3)) error.imageUrl3 = 'Image URL must end in .png, .jpg, or .jpeg'
-            if (imageUrl4 && !checkImageUrl(imageUrl4)) error.imageUrl4 = 'Image URL must end in .png, .jpg, or .jpeg'  
-            
+            if (imageUrl4 && !checkImageUrl(imageUrl4)) error.imageUrl4 = 'Image URL must end in .png, .jpg, or .jpeg'
+
             return error;
         };
         // UPDATE the error state
@@ -82,7 +82,7 @@ function CreateSpotForm() {
                 lat,
                 lng,
             };
-           
+
             const response = await dispatch(createNewSpot(newSpot, previewImage, [imageUrl1, imageUrl2, imageUrl3, imageUrl4]));
 
             if(response && response.id) navigate(`/spots/${response.id}`);
@@ -98,51 +98,52 @@ function CreateSpotForm() {
                     <h5>Guests will only get your exact address once they booked a reservation.</h5>
                     <label>
                         Country:
-                        <div className="error" >
-                            {error.country && <p>{error.country}</p>}
-                        </div>
                         <input
                             type="text"
                             placeholder="Country"
                             value={country}
                             onChange={(e) => setCountry(e.target.value)}
                         />
+                        <div className="error" >
+                            {error.country && <p>{error.country}</p>}
+                        </div>
                     </label>
+
                     <label>
                         Street Address:
-                        <div className="error" >
-                            {error.address && <p>{error.address}</p>}
-                        </div>
                         <input
                             type="text"
                             placeholder="Address"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                         />
+                        <div className="error" >
+                            {error.address && <p>{error.address}</p>}
+                        </div>
                     </label>
                     <label>
                         City:
-                        <div className="error" >
-                            {error.city && <p>{error.city}</p>}
-                        </div>
                         <input
                             type="text"
                             placeholder="City"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
                         />
+                        <div className="error" >
+                            {error.city && <p>{error.city}</p>}
+                        </div>
                     </label>
                     <label>
                         State:
-                        <div className="error" >
-                            {error.state && <p>{error.state}</p>}
-                        </div>
                         <input
                             type="text"
                             placeholder="State"
                             value={state}
                             onChange={e => setState(e.target.value)}
                         />
+                        <div className="error" >
+                            {error.state && <p>{error.state}</p>}
+                        </div>
                     </label>
                     <label>
                         Latitude:
@@ -156,6 +157,7 @@ function CreateSpotForm() {
                             {error.lat && <p>{error.lat}</p>}
                         </div>
                     </label>
+                    <br></br>
                     <label>
                         Longitude:
                         <input
@@ -276,10 +278,12 @@ function CreateSpotForm() {
                             {error.imageUrl4 && <p>{error.imageUrl4}</p>}
                         </div>
                     </label>
+                    <br></br>
                     <button
                         type="submit"
                     >Create Spot
                     </button>
+                    {' '}
                     <button
                         className='demo-user-modal-button'
                         type="submit"
@@ -308,6 +312,3 @@ function CreateSpotForm() {
 
 
 export default CreateSpotForm;
-
-
-

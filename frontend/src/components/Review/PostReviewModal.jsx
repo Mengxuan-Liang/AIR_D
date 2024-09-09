@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaPaw } from 'react-icons/fa6';
 // import { GoStarFill } from "react-icons/go";
 // import './PostReviewModal.css';
+import '../LoginFormModal/LoginForm.css'
 
 
 export default function PostReviewModal({ spotId }) {
@@ -45,7 +46,7 @@ export default function PostReviewModal({ spotId }) {
             if (newReview) {
                 // console.log('created new review from postreviewmodal', newReview)
                 await dispatch(getAllReviews(spotId));
-                // // console.log('sssssssssss','Closing modal'); 
+                // // console.log('sssssssssss','Closing modal');
                 await dispatch(getOneSpot(spotId))
             }
             await closeModal();
@@ -64,7 +65,7 @@ export default function PostReviewModal({ spotId }) {
     }
 
     return (
-        <div>
+        <div className="log-sign-form">
             <h2>How was your stay?</h2>
             <label>
                 <textarea

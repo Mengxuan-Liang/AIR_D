@@ -22,11 +22,11 @@ export default function CurrentReviews() {
         dispatch(getAllSpots())
         dispatch(getAllReviewByUserId())
     },[dispatch])
-   
+
     return (
         <div>
             <h2>Manage Reviews</h2>
-            <div>
+            <div className='spots-container'>
                 {reviews &&
                     reviews.length > 0 &&
                     reviews.map((review, index) => {
@@ -35,28 +35,30 @@ export default function CurrentReviews() {
                             month: "long",
                         });
                         const year = createdAtDate.getFullYear();
-                        const spot = spots[review.spotId]                        
+                        const spot = spots[review.spotId]
                         return (
                             <>
                                 <div key={index} className='actual-reviews'>
+                                    <img src={spot.previewImage} style={{width:'250px', height:'250px', borderRadius:"7px"}}></img>
                                     <div className='item' style={{ fontSize: '18px' }}>{review?.User?.firstName}</div>
                                     <div className='item' style={{ fontSize: "14px" }}>{`${month} ${year}`}</div>
                                     <div className='item' style={{ fontSize: "12px" }}>{review?.review}</div>
                                     <div>
-                                       
+
                                             <div>
                                                 <OpenModalButton
                                                     buttonText={'Update'}
                                                     modalComponent={<EditReviewModal userReview = {review} spotName={spot?.name}  spotId={spot?.id} key={spot?.id}/>}
                                                 />
                                             </div>
+                                            <br></br>
                                             <div>
                                                 <OpenModalButton
                                                     buttonText={'Delete'}
                                                     modalComponent={<DeleteReviewModal reviewId={review?.id} spotId={spot?.id} key={spot?.id}/>}
                                                 />
                                             </div>
-                                       
+
                                     </div>
                                 </div>
 

@@ -5,7 +5,7 @@ import { updateReview, getAllReviewByUserId } from "../../store/reviewReducer"
 // import { getAllSpots, getOneSpot } from "../../store/spotsReducer"
 import { useEffect, useState } from "react";
 import { FaPaw } from 'react-icons/fa6';
-
+import '../LoginFormModal/LoginForm.css'
 // import { GoStarFill } from "react-icons/go";
 // import './PostReviewModal.css';
 
@@ -69,7 +69,7 @@ export default function EditReviewModal({ userReview, spotName }) {
     };
 
     return (
-        <div>
+        <div className="log-sign-form">
             <h2>How was your stay at
                 <br></br>
                 {spotName} ?</h2>

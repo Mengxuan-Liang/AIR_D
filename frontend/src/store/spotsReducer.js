@@ -50,7 +50,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
             headers:  { 'Content-Type': 'application/json' },
             body: JSON.stringify(spot)
         });
-    console.log(response)
+    // console.log(response)
         if(response.ok){
             // PARSE response get ID
             const newSpot = await response.json();
@@ -64,7 +64,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
                 },
                 body: JSON.stringify({url: previewImage, preview: true}),
             });
-            // PARSE & PUSH prevIMG 
+            // PARSE & PUSH prevIMG
             if(previewImageRes.ok){
                 const newPrevImg = await previewImageRes.json();
                 spotImages.push(newPrevImg);
@@ -85,7 +85,7 @@ export const updateSpot = (id, spot, previewImage, images) => async (dispatch) =
                 }
             }
             newSpot.images = spotImages;
-    
+
             // DISPATCH ACTION CREATOR
             dispatch(editSpot(newSpot));
             return newSpot;
@@ -149,7 +149,7 @@ export const createNewSpot = (spot, previewImage, images) => async (dispatch) =>
             },
             body: JSON.stringify({url: previewImage, preview: true}),
         });
-        // PARSE & PUSH prevIMG 
+        // PARSE & PUSH prevIMG
         if(previewImageRes.ok){
             const newPrevImg = await previewImageRes.json();
             // console.log('preview image response from spotReducer',newPrevImg)
@@ -204,7 +204,7 @@ export const getOneSpot = (spotId) => async (dispatch) => {
     const response = await fetch(`/api/spots/${spotId}`);
     if (response.ok) {
         const data = await response.json();
-        
+
         // console.log('this is the data from reducer',data)
         dispatch(oneSpot(data));
     } else {

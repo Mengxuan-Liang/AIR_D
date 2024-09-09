@@ -12,7 +12,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
-  
+
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -51,11 +51,11 @@ function LoginFormModal() {
   if (sessionUser) return <Navigate to="/" replace={true} />;
 
   return (
-    <>
+    <div className='log-sign-form-container'>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='log-sign-form'>
         <label>
-          Username or Email
+          Username or Email{' '}
           <input
             type="text"
             value={credential}
@@ -63,8 +63,10 @@ function LoginFormModal() {
             required
           />
         </label>
+        <br></br>
+        <br></br>
         <label>
-          Password
+          Password{' '}
           <input
             type="password"
             value={password}
@@ -74,9 +76,13 @@ function LoginFormModal() {
         </label>
         {errors.credential && <p>{errors.credential}</p>}
         {errors.password && <p>{errors.password}</p>}
+        <br></br>
+        <br></br>
         <button type="submit"
           disabled={isButtonDisabled}
         >Log In</button>
+        <br></br>
+        <br></br>
         <button type='submit'
           onClick={()=> {
             setCredential('demo@user.io');
@@ -84,7 +90,7 @@ function LoginFormModal() {
           }}
         >Demo User</button>
       </form>
-    </>
+    </div>
   );
 }
 

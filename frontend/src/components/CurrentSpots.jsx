@@ -44,6 +44,8 @@ export default function CurrentSpots() {
                                             navigate(`/spots/${spot.id}/edit`)
                                         }}
                                     >Update</button>
+                                    <br></br>
+                                    <br></br>
                                     <div>
                                         <OpenModalButton
                                             buttonText={'Delete'}

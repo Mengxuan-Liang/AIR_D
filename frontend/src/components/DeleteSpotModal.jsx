@@ -2,6 +2,7 @@ import { useModal } from "../context/Modal";
 import {useDispatch} from 'react-redux';
 import { getAllSpots, removeSpot } from "../store/spotsReducer";
 // import { useModal } from "../../context/Modal"
+import './LoginFormModal/LoginForm.css'
 
 
 export default function DeleteSpotModal({spot}){
@@ -16,7 +17,7 @@ export default function DeleteSpotModal({spot}){
     }
 
     return (
-        <div>
+        <div className="log-sign-form-container">
             <h2>Comfirm Delete</h2>
             <p>Are you sure you want to remove this spot from the listings?</p>
             <div>
