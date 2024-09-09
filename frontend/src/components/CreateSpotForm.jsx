@@ -297,7 +297,10 @@ function CreateSpotForm() {
                             setPrice(1);
                             setLat(1)
                             setLng(1)
-                            setPreviewImage('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
+                            setImageUrl1('https://res.cloudinary.com/dhukvbcqm/image/upload/v1725663641/capstone/IMG_0773_jegzj3.jpg')
+                            setImageUrl2('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
+                            setImageUrl3('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
+                            setImageUrl4('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
                         }}
                     >
                         {" "}
