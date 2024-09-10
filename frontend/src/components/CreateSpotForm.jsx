@@ -297,10 +297,11 @@ function CreateSpotForm() {
                             setPrice(1);
                             setLat(1)
                             setLng(1)
-                            setImageUrl1('https://res.cloudinary.com/dhukvbcqm/image/upload/v1725663641/capstone/IMG_0773_jegzj3.jpg')
-                            setImageUrl2('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
-                            setImageUrl3('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
-                            setImageUrl4('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368714/pascale-weber-still-life-ai-dogs-animal-photographer-stillstars-001_oyv0nt.jpg')
+                            setPreviewImage('https://res.cloudinary.com/dhukvbcqm/image/upload/v1721611476/9f278c86-83a6-4885-af7e-51174330b4d6_oyucez.jpg')
+                            setImageUrl1('https://res.cloudinary.com/dhukvbcqm/image/upload/v1721611480/openart-image_LBoOQhNz_1721610485086_raw_ooy1w7.jpg')
+                            setImageUrl2('https://res.cloudinary.com/dhukvbcqm/image/upload/v1721611479/76009f03-c6ca-4f67-b5b4-a931a842c359_tjetup.jpg')
+                            setImageUrl3('https://res.cloudinary.com/dhukvbcqm/image/upload/v1717368587/dog_house_by_ai_visions_dgmjcu1-pre_uyxfv8.jpg')
+                            setImageUrl4('https://res.cloudinary.com/dhukvbcqm/image/upload/v1721611475/42c4fb6a-36ae-4ad2-9825-9d41a2e41d17_dlsf1b.jpg')
                         }}
                     >
                         {" "}
